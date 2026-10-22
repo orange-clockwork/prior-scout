@@ -9,11 +9,74 @@ Prior-Scout（先例探索）是一個只含指示的小型 Agent Skill。提供
 支持的相似處與重要差異。它將既有成果查找整理成可重複、範圍有限的流程，完成後
 接回你原本的工作。
 
-**狀態：`0.1.1-experimental`，本機發布候選。** 尚未驗證公開儲存庫或正式發布。
+**狀態：`0.1.1-experimental`，已在 GitHub 公開。** 2026-10-22 已驗證匿名存取，
+以及從公開來源進行專案層級安裝。
 現有證據包含實際讀取來源的 smoke test，以及 14 題使用新子上下文的子代理審查，
 限制如下。這是聚焦流程的打包，尚未證明比良好的普通 Codex Prompt 或其他 Skill 更準確。
 
 英文 README 是主要維護版本；各語言翻譯應維持相同的技術主張與限制。
+
+## 從 GitHub 安裝
+
+使用公開儲存庫 [orange-clockwork/prior-scout](https://github.com/orange-clockwork/prior-scout)。
+[Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 需要 Node.js 22.20 以上版本。
+請在目標專案中執行：
+
+```sh
+npx skills@1.7.4 add orange-clockwork/prior-scout --list
+npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex
+```
+
+若要明確指定複製模式並略過互動提示：
+
+```sh
+npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
+npx skills@1.7.4 list -a codex
+```
+
+安裝前先確認目標專案沒有同名 Skill。若出現範圍選擇，請選專案層級，不要加上 `-g`。
+安裝位置為 `.agents/skills/prior-scout/`；只安裝 `skills/prior-scout/`，包含 MIT LICENSE。
+
+**PASS — 公開來源安裝：** 已透過 npx 與 Skills CLI 1.7.4，在兩個各自全新的臨時專案
+實測上述兩種安裝命令。只發現一個 Skill，安裝後的 SKILL.md 與 LICENSE 均與公開版本
+逐位元組一致。CLI 偵測到 Codex 環境，採用專案範圍與複製模式；其他環境的互動提示
+沒有另行測試。詳見[發布驗證紀錄](docs/release-checklist.md#public-release-verification-2026-10-22)。
+[M4 安裝紀錄](evals/runs/install-m4-20261022.md)保留為當時的本機來源測試紀錄。
+
+**NOT TESTED — 使用此次公開安裝版本的新 Codex 原生會話。**
+目前尚未確立能保護既有系統 Skill 快取的安全啟動條件。人工驗證時，請在安裝後的專案
+開啟新的 Codex 對話，選取專案層級的 `prior-scout`，送出下方明確指定的使用範例。
+確認所選路徑、實際指示取得、搜尋與來源讀取；僅手動讀取檔案不算結構化原生載入證據。
+
+發布驗證當下，skills.sh 頁面顯示無法使用／404，`skills find prior-scout` 沒有結果。
+find-skills 推薦及跨執行環境自動選用仍未驗證；索引收錄與 GitHub 直接安裝是不同項目，
+不保證立即收錄。
+
+## 使用方式
+
+明確指定使用（此實驗版建議採用）：
+
+> 使用 $prior-scout，尋找能檢查 Markdown 知識庫中失效連結、缺少附件與重複檔名的
+> 現有開源工具。閱讀可靠來源，說明已核實的相似處與重要限制。
+
+由執行環境選用 Skill 的自然請求範例：
+
+> 有沒有和這個構想相似的既有工具或研究實作？請找幾個有來源支持的候選，
+> 簡短說明重要差異。
+
+需要外部對照的新規劃也可能適用。一般 Bug 修正、排版、摘要、翻譯、重構與已定案的
+實作，不應因此啟動研究；使用者限定只用提供資料時，須優先遵守。回答語言跟隨使用者。
+這些是示意輸入，不是自動觸發成功的測試紀錄。
+
+## Evidence-First 核實原則與限制
+
+預設上限為 6 個搜尋 query、8 份不同的外部證據文件，通常列出 3～5 個候選。
+這是指示限制，不是程式強制保證。搜尋摘要只當線索；重要主張必須實際讀取來源成功，
+並有直接證據支持。規劃中的功能與可整合 API 不等於已完成的工作流程。
+部分相似不代表完全替代；一次搜尋沒找到，也不代表不存在。
+
+回答前會核對主張與證據，修正、標為未核實或移除無依據的內容；不強制每個候選都有
+兩份來源、數值分數或冗長檢查表。它無法保證找齊所有成果或完全消除模型幻覺。
 
 ## 主要功能
 
@@ -34,60 +97,6 @@ Prior-Scout（先例探索）是一個只含指示的小型 Agent Skill。提供
 Prior-Scout 本身不包含搜尋引擎、解析器、執行時相依套件、帳號、付費 API 整合或遙測。
 來源或工具不可用時，應揭露限制，而非捏造已完成的查證。
 
-## 本機安裝
-
-已查核的 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 需要 Node.js 22.20
-以上版本。請從新的目標專案指向本機候選目錄。以下假設兩個目錄位於同一層，
-請依實際位置調整相對路徑：
-
-```sh
-npx skills@1.7.4 add ../Prior-Scout-Public-Prep --list
-npx skills@1.7.4 add ../Prior-Scout-Public-Prep --skill prior-scout -a codex --copy -y
-npx skills@1.7.4 list -a codex
-```
-
-複製前先檢查目標專案是否已有同名 Skill。預設為專案層級，本流程不要加上全域安裝旗標。
-目標位置為 `.agents/skills/prior-scout/`。只會安裝 `skills/prior-scout/`，並攜帶其中的
-LICENSE；核心指示只有一個維護來源。
-
-M4 已使用既有官方 CLI 入口，驗證本機發現、專案層級安裝與檔案逐位元組一致性；尚未在新的
-Codex 對話中驗證載入。[安裝紀錄](evals/runs/install-m4-20261022.md)將實際 CLI 檢查、
-npx 啟動、執行環境載入及遠端安裝分開記錄，不能由其中一項推論其他項目也成功。
-請在新的 Codex 對話確認安裝項目出現在清單中，明確指定 `$prior-scout`，並檢查實際的
-指示讀取與來源查核。清單未更新時可重新啟動執行環境。讀取指示檔案的紀錄，
-不等同於另有結構化載入器的診斷證據。
-
-## 公開發布後的 GitHub 安裝預計命令 — 尚未驗證
-
-預計 GitHub 路徑為 `orange-clockwork/prior-scout`。儲存庫尚未建立或公開，
-遠端安裝狀態為 **NOT TESTED**。以下命令是**公開發布後使用的預計命令**，
-不是目前已可使用的安裝來源：
-
-```sh
-npx skills@1.7.4 add orange-clockwork/prior-scout --list
-npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
-```
-
-執行前須確認實際帳號與公開儲存庫。本機安裝成功不代表遠端安裝、skills.sh 顯示、
-`skills find` 搜尋、find-skills 推薦或執行環境自動選用已通過。
-請參閱[發布清單](docs/release-checklist.md)。
-
-## 使用方式
-
-明確指定使用（此實驗版建議採用）：
-
-> 使用 $prior-scout，尋找能檢查 Markdown 知識庫中失效連結、缺少附件與重複檔名的
-> 現有開源工具。閱讀可靠來源，說明已核實的相似處與重要限制。
-
-由執行環境選用 Skill 的自然請求範例：
-
-> 有沒有和這個構想相似的既有工具或研究實作？請找幾個有來源支持的候選，
-> 簡短說明重要差異。
-
-需要外部對照的新規劃也可能適用。一般 Bug 修正、排版、摘要、翻譯、重構與已定案的
-實作，不應因此啟動研究；使用者限定只用提供資料時，須優先遵守。回答語言跟隨使用者。
-這些是示意輸入，不是自動觸發成功的測試紀錄。
-
 ## 實際範例與證據
 
 - [軟體功能歸屬](evals/runs/evidence-regression-ef02-r1-20261022.md)：固定版本的
@@ -99,16 +108,6 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex -
 
 這些是實際記錄的輸出，不是潤飾後替換的答案，也不是候選工具的執行測試。
 完整輸入、輸出、來源與限制見[範例](docs/examples.md)及[評測結果](evals/results.md)。
-
-## Evidence-First 核實原則與限制
-
-預設上限為 6 個搜尋 query、8 份不同的外部證據文件，通常列出 3～5 個候選。
-這是指示限制，不是程式強制保證。搜尋摘要只當線索；重要主張必須實際讀取來源成功，
-並有直接證據支持。規劃中的功能與可整合 API 不等於已完成的工作流程。
-部分相似不代表完全替代；一次搜尋沒找到，也不代表不存在。
-
-回答前會核對主張與證據，修正、標為未核實或移除無依據的內容；不強制每個候選都有
-兩份來源、數值分數或冗長檢查表。它無法保證找齊所有成果或完全消除模型幻覺。
 
 ## 測試與結果
 
@@ -131,6 +130,6 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex -
 權利仍屬各權利人；本專案不散布上游來源全文。
 
 核心為 [SKILL.md](skills/prior-scout/SKILL.md)。開發限制見 [AGENTS.md](AGENTS.md)，
-評測方法限制見[評測說明](evals/README.md)。候選中不包含原始開發 Git 歷史或私人原始紀錄。
-[發布準備報告](docs/release-preparation.md)列出檔案清單、檢查結果與待辦事項，
-不代表已提交、操作遠端或公開發布。
+評測方法限制見[評測說明](evals/README.md)。公開儲存庫不包含原始開發 Git 歷史或私人原始紀錄。
+[發布準備報告](docs/release-preparation.md)保留 M4 當時的狀態；
+目前發布驗證結果見[發布清單](docs/release-checklist.md)。

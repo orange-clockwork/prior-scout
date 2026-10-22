@@ -1,5 +1,10 @@
 # M4 release preparation — 2026-10-22
 
+> Historical M4 snapshot. The project was subsequently published on GitHub.
+> Current publication, installation and remaining native-use/discovery results
+> are recorded in the [release checklist](release-checklist.md#public-release-verification-2026-10-22).
+> Unpublished statements below describe the earlier preparation milestone.
+
 **Candidate: Prior-Scout 0.1.1-experimental. Decision: READY FOR USER REVIEW.**
 This means local P1–P4 preparation for user review only. No public release,
 repository creation, Git initialization, staging, commit or push occurred.

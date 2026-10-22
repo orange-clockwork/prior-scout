@@ -8,12 +8,75 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill。输
 它会从公开资料中查找用途相近的工具、服务、Skill、库或研究实现，简要说明有证据支持的
 相似点和关键差异。它提供一套可复用、范围明确的既有方案调查流程，完成后继续原来的任务。
 
-**状态：`0.1.1-experimental`，本地发布候选版本。** 尚未验证公开仓库或正式发布。
+**状态：`0.1.1-experimental`，已在 GitHub 公开。** 2026-10-22 已验证匿名访问，
+以及从公开来源进行项目级安装。
 现有证据包括实际读取来源的冒烟测试，以及在新子上下文中进行的 14 个案例的子代理审查，
 具体限制见下文。这是一套聚焦工作流的封装，尚未证明比良好的普通 Codex 提示词或其他
 Skill 更准确。
 
 英文 README 是主要维护版本；其他语言的翻译应保留相同的技术结论和限制。
+
+## 从 GitHub 安装
+
+使用公开仓库 [orange-clockwork/prior-scout](https://github.com/orange-clockwork/prior-scout)。
+[Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本。
+请在目标项目中执行：
+
+```sh
+npx skills@1.7.4 add orange-clockwork/prior-scout --list
+npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex
+```
+
+如需明确指定复制模式并跳过交互提示：
+
+```sh
+npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
+npx skills@1.7.4 list -a codex
+```
+
+安装前先确认目标项目中没有同名 Skill。若出现范围选择，请选项目级，不要添加 `-g`。
+安装位置为 `.agents/skills/prior-scout/`；只安装 `skills/prior-scout/`，包含 MIT LICENSE。
+
+**PASS — 公开来源安装：** 已使用 npx 和 Skills CLI 1.7.4，在两个分别新建的临时项目
+实测上述两种安装命令。只发现一个 Skill，安装后的 SKILL.md 和 LICENSE 均与公开版本
+逐字节一致。CLI 检测到 Codex 环境，采用项目范围和复制模式；其他环境的交互提示
+没有单独测试。详见[发布验证记录](docs/release-checklist.md#public-release-verification-2026-10-22)。
+[M4 安装记录](evals/runs/install-m4-20261022.md)保留为当时的本地来源测试记录。
+
+**NOT TESTED — 使用此次公开安装版本的新 Codex 原生会话。**
+目前尚未确立能够保护现有系统 Skill 缓存的安全启动条件。人工验证时，请在安装后的项目
+打开新的 Codex 会话，选择项目级的 `prior-scout`，提交下方明确指定的使用示例。
+确认所选路径、实际指令获取、搜索和来源读取；仅手动读取文件不算结构化原生加载证据。
+
+发布验证当时，skills.sh 页面显示不可用／404，`skills find prior-scout` 没有结果。
+find-skills 推荐及跨宿主自动选用仍未验证；索引收录与 GitHub 直接安装是不同项目，
+不保证立即收录。
+
+## 使用方式
+
+明确指定使用（此实验版建议采用）：
+
+> 使用 $prior-scout，查找能够检查 Markdown 知识库中的失效链接、缺失附件和重名文件的
+> 现有开源工具。阅读可靠来源，说明已核实的相似点和关键限制。
+
+由宿主选择 Skill 的自然语言请求示例：
+
+> 有没有与这个设想相似的现有工具或研究实现？请找几个有来源支持的候选，
+> 简要说明关键差异。
+
+需要外部对照的新计划也可能适用。普通 Bug 修复、格式调整、摘要、翻译、重构和方案已定的
+实现，不应因此启动调查；用户要求只使用提供的资料时，应优先遵守。回答语言跟随用户。
+这些是输入示例，不是自动触发成功的测试记录。
+
+## Evidence-First 核实原则与限制
+
+默认上限为 6 条搜索查询、8 份不同的外部证据文档，通常列出 3～5 个候选。
+这是指令约束，不是程序强制保证。搜索摘要只作为线索；重要结论需要实际成功读取来源，
+并获得直接证据支持。计划中的功能和可用于集成的 API 不等于已经完成的工作流。
+部分相似不等于完全替代；一次搜索没找到，也不代表不存在。
+
+回答前会核对结论与证据，修正、标为未核实或删除缺乏依据的内容；不强制每个候选都具有
+两份来源、数值评分或冗长检查表。它无法保证找到所有相关成果，也不能完全消除模型幻觉。
 
 ## 主要功能
 
@@ -34,60 +97,6 @@ Skill 更准确。
 Prior-Scout 本身不包含搜索引擎、解析器、运行时依赖、账号、付费 API 集成或遥测。
 来源或工具不可用时，应说明限制，而不是编造已经完成的核实。
 
-## 本地安装
-
-已核对的 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20
-或更高版本。请在新的目标项目中指定本地候选目录。以下示例假设两个目录位于同一父目录，
-请根据实际位置调整相对路径：
-
-```sh
-npx skills@1.7.4 add ../Prior-Scout-Public-Prep --list
-npx skills@1.7.4 add ../Prior-Scout-Public-Prep --skill prior-scout -a codex --copy -y
-npx skills@1.7.4 list -a codex
-```
-
-复制前，请先检查目标项目中是否已经安装同名 Skill。默认采用项目级安装，本流程不要添加
-全局安装参数。目标路径为 `.agents/skills/prior-scout/`。只安装 `skills/prior-scout/`，
-同时复制其中的 LICENSE；核心指令只有一个维护来源。
-
-M4 已通过现有官方 CLI 入口验证本地发现、项目级安装以及文件的逐字节一致性；尚未在新的
-Codex 会话中验证加载。[安装记录](evals/runs/install-m4-20261022.md)分别说明实际 CLI 检查、
-npx 启动、宿主加载和远程安装，不能用其中一项的成功推断其他项也已通过。
-请在新的 Codex 会话中确认安装项出现在列表里，明确指定 `$prior-scout`，并检查实际的
-指令读取和来源核实。列表未更新时可重启宿主。读取了指令文件的记录，不等于另有
-结构化加载器的诊断证据。
-
-## 公开发布后的 GitHub 安装计划命令 — 未验证
-
-计划中的 GitHub 路径为 `orange-clockwork/prior-scout`。仓库尚未创建或公开，
-远程安装状态为 **NOT TESTED**。以下命令**计划在公开发布后使用**，不是当前已经
-可用的安装来源：
-
-```sh
-npx skills@1.7.4 add orange-clockwork/prior-scout --list
-npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
-```
-
-使用前需要确认实际账号和公开仓库。本地安装成功不代表远程安装、skills.sh 展示、
-`skills find` 搜索、find-skills 推荐或宿主自动选用已经通过。
-请参阅[发布清单](docs/release-checklist.md)。
-
-## 使用方式
-
-明确指定使用（此实验版建议采用）：
-
-> 使用 $prior-scout，查找能够检查 Markdown 知识库中的失效链接、缺失附件和重名文件的
-> 现有开源工具。阅读可靠来源，说明已核实的相似点和关键限制。
-
-由宿主选择 Skill 的自然语言请求示例：
-
-> 有没有与这个设想相似的现有工具或研究实现？请找几个有来源支持的候选，
-> 简要说明关键差异。
-
-需要外部对照的新计划也可能适用。普通 Bug 修复、格式调整、摘要、翻译、重构和方案已定的
-实现，不应因此启动调查；用户要求只使用提供的资料时，应优先遵守。回答语言跟随用户。
-这些是输入示例，不是自动触发成功的测试记录。
-
 ## 实际示例与证据
 
 - [软件功能归属](evals/runs/evidence-regression-ef02-r1-20261022.md)：固定版本的软件包
@@ -99,16 +108,6 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex -
 
 这些是实际记录的输出，不是经过润色后替换的答案，也不是候选工具的运行测试。
 完整输入、输出、来源和限制见[示例](docs/examples.md)与[评测结果](evals/results.md)。
-
-## Evidence-First 核实原则与限制
-
-默认上限为 6 条搜索查询、8 份不同的外部证据文档，通常列出 3～5 个候选。
-这是指令约束，不是程序强制保证。搜索摘要只作为线索；重要结论需要实际成功读取来源，
-并获得直接证据支持。计划中的功能和可用于集成的 API 不等于已经完成的工作流。
-部分相似不等于完全替代；一次搜索没找到，也不代表不存在。
-
-回答前会核对结论与证据，修正、标为未核实或删除缺乏依据的内容；不强制每个候选都具有
-两份来源、数值评分或冗长检查表。它无法保证找到所有相关成果，也不能完全消除模型幻觉。
 
 ## 测试与结果
 
@@ -131,6 +130,6 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex -
 权利仍归各权利人所有；本项目不分发上游来源全文。
 
 核心文件为 [SKILL.md](skills/prior-scout/SKILL.md)。开发约束见 [AGENTS.md](AGENTS.md)，
-评测方法的限制见[评测说明](evals/README.md)。候选版本不包含原始开发 Git 历史或私有原始记录。
-[发布准备报告](docs/release-preparation.md)列出文件清单、检查结果和待办事项，
-不代表已经提交、执行远程操作或公开发布。
+评测方法的限制见[评测说明](evals/README.md)。公开仓库不包含原始开发 Git 历史或私有原始记录。
+[发布准备报告](docs/release-preparation.md)保留 M4 当时的状态；
+当前发布验证结果见[发布清单](docs/release-checklist.md)。
