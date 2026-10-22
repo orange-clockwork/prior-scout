@@ -4,132 +4,99 @@
 
 **找一样的，先查证再下结论。**
 
-Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill。输入需求、网址或可读文档，
-它会从公开资料中查找用途相近的工具、服务、Skill、库或研究实现，简要说明有证据支持的
-相似点和关键差异。它提供一套可复用、范围明确的既有方案调查流程，完成后继续原来的任务。
+Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮助你在开始开发前查找现有方案。
+提供需求、网址或可读文档，它会搜索公开来源、核实相关功能，简要比较工具、服务、Skill、
+库或研究实现的相似点和关键差异。
 
-**状态：`0.1.1-experimental`，已在 GitHub 公开。** 2026-10-22 已验证匿名访问，
-以及从公开来源进行项目级安装。
-现有证据包括实际读取来源的冒烟测试，以及在新子上下文中进行的 14 个案例的子代理审查，
-具体限制见下文。这是一套聚焦工作流的封装，尚未证明比良好的普通 Codex 提示词或其他
-Skill 更准确。
+**`0.1.1-experimental` · 已在 GitHub 公开 · MIT**
 
-英文 README 是主要维护版本；其他语言的翻译应保留相同的技术结论和限制。
+## 看实际案例
 
-## 从 GitHub 安装
+以下取自 2026-10-22 使用 `0.1.1-experimental` 的真实审查案例；输入已译为简体中文。
 
-使用公开仓库 [orange-clockwork/prior-scout](https://github.com/orange-clockwork/prior-scout)。
-[Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本。
-请在目标项目中执行：
+> 在实现 Markdown 链接检查器前，先查找现有开源方案并说明相关差异。
+> 接着为我原本的检查器写一份简短实现大纲。不要修改文件。
+
+**结果摘要** — 根据当时记录的回答删节、翻译：
+
+| 候选 | 来源支持的功能 | 影响使用的关键差异 |
+| --- | --- | --- |
+| [Lychee](https://github.com/lycheeverse/lychee) — CLI／库 | 检查 Markdown、HTML 和网站链接。 | 锚点检查须启用 `--include-fragments`；不能检查 JavaScript 动态生成的锚点。[文档](https://lychee.cli.rs/recipes/anchors/) |
+| [markdown-link-check](https://github.com/tcort/markdown-link-check) — Node.js CLI／库 | 检查链接可用性，提供 HTTP 设置和重试。 | 当次阅读的 README **尚未证实**跨文件标题验证能力。 |
+| [remark-validate-links](https://github.com/remarkjs/remark-validate-links) — remark 插件 | 离线检查本地文件、图片和标题。 | **跨文件标题检查须通过 remark CLI，Node API 不提供这项能力。** 外部网址不在范围内。 |
+
+重点是确认功能有没有文档支持、属于哪种使用方式，以及哪些能力仍未证实。
+比较完成后，回答继续处理原本要求的实现大纲。
+
+这次历史子代理任务使用 **2 条搜索查询、4 份外部证据文档**，没有安装或运行候选工具。
+这是文档核实结果，不是准确率测量或原生自动选用的证明。
+[完整案例、来源和限制](docs/examples.md#t2-markdown-link-checker)。
+
+## 安装与使用
+
+[Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本；
+宿主须支持 Agent Skills 加载、搜索和来源读取。请在目标项目中执行：
 
 ```sh
-npx skills@1.7.4 add orange-clockwork/prior-scout --list
 npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex
 ```
 
-如需明确指定复制模式并跳过交互提示：
+先确认没有同名 Skill；若出现范围选择，请选项目级，不要添加 `-g`。
+安装位置为 `.agents/skills/prior-scout/`，包含 SKILL.md 和 MIT LICENSE。
+
+在该项目中打开新的 Codex 会话，明确指定使用 Skill。
+以下是调用示例，与上方历史 Demo 的原始输入不同：
+
+> 使用 $prior-scout，查找现有的开源 Markdown 链接检查器。
+> 阅读可靠来源，简要说明已核实的相似点和关键差异。
+
+<details>
+<summary>先查看列表，以及明确指定复制安装</summary>
 
 ```sh
+npx skills@1.7.4 add orange-clockwork/prior-scout --list
 npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
 npx skills@1.7.4 list -a codex
 ```
 
-安装前先确认目标项目中没有同名 Skill。若出现范围选择，请选项目级，不要添加 `-g`。
-安装位置为 `.agents/skills/prior-scout/`；只安装 `skills/prior-scout/`，包含 MIT LICENSE。
+复制命令是主安装命令的另一种选择；执行前同样须确认目标项目中没有同名安装。
 
-**PASS — 公开来源安装：** 已使用 npx 和 Skills CLI 1.7.4，在两个分别新建的临时项目
-实测上述两种安装命令。只发现一个 Skill，安装后的 SKILL.md 和 LICENSE 均与公开版本
-逐字节一致。CLI 检测到 Codex 环境，采用项目范围和复制模式；其他环境的交互提示
-没有单独测试。详见[发布验证记录](docs/release-checklist.md#public-release-verification-2026-10-22)。
-[M4 安装记录](evals/runs/install-m4-20261022.md)保留为当时的本地来源测试记录。
+</details>
 
-**NOT TESTED — 使用此次公开安装版本的新 Codex 原生会话。**
-目前尚未确立能够保护现有系统 Skill 缓存的安全启动条件。人工验证时，请在安装后的项目
-打开新的 Codex 会话，选择项目级的 `prior-scout`，提交下方明确指定的使用示例。
-确认所选路径、实际指令获取、搜索和来源读取；仅手动读取文件不算结构化原生加载证据。
+## 工作流程
 
-发布验证当时，skills.sh 页面显示不可用／404，`skills find prior-scout` 没有结果。
-find-skills 推荐及跨宿主自动选用仍未验证；索引收录与 GitHub 直接安装是不同项目，
-不保证立即收录。
+1. 确认需求、要比较的相似维度和必要条件。
+2. 在有限预算内搜索：通常最多 **6 条查询、8 份外部证据文档**。
+3. 阅读可靠来源，确认结论适用的交付物、版本、服务套餐或使用方式。
+4. 简要说明有依据的相似点、关键差异和未知项，再继续其他已授权任务。
 
-## 使用方式
+搜索摘要只作为线索。API、计划中的功能和部分相似，不等于完整的内置功能。
+预算是指令约束，不是程序强制保证。搜索和来源读取由宿主提供；Prior-Scout
+不增加运行时依赖或遥测。无法取得证据时应说明限制，并优先遵守仅使用所提供资料的要求。
 
-明确指定使用（此实验版建议采用）：
+适合明确查找替代方案、相关成果，以及需要外部比较的新计划。普通修复、翻译和方案已定的
+实现不需要因此开启新搜索。它不判断采用方案、创新性、法律地位或商业价值，不运行候选，
+也不主动展开未要求的后续研究。详见[范围说明](docs/scope.md)。
 
-> 使用 $prior-scout，查找能够检查 Markdown 知识库中的失效链接、缺失附件和重名文件的
-> 现有开源工具。阅读可靠来源，说明已核实的相似点和关键限制。
+## 证据与限制
 
-由宿主选择 Skill 的自然语言请求示例：
+- **公开安装已验证：** 主安装和复制命令已在不同的全新项目中测试，核心与 LICENSE 均与公开来源逐字节一致。[发布检查](docs/release-checklist.md#public-release-verification-2026-10-22)
+- **14 个案例的审查：** 包括 8 个质量任务和 6 个选用控制，使用新的子上下文，但仍共享宿主指令；不是完整独立盲测，也未取得完整初始提示和结构化加载器事件。[评测结果](evals/results.md)
+- **分别记录宿主观察：** Mac 发布测试的新 Codex 会话仍为 NOT TESTED。后续 Windows 安装和使用是用户报告，这个仓库尚未保存 Windows 原始执行记录。[Windows 摘要和限制](docs/examples.md#windows-user-reported-observation)
 
-> 有没有与这个设想相似的现有工具或研究实现？请找几个有来源支持的候选，
-> 简要说明关键差异。
+这些观察不能证明准确率、找到所有相关成果、消除模型幻觉，或优于良好的普通 Codex 提示词
+及其他 Skill。独立 A/B/C 比较、保留集评测、候选工具的实际运行、精确成本和跨宿主
+可靠的自动选用仍未验证。直接安装成功也不保证 skills.sh 收录、`skills find` 搜索可见性
+或 find-skills 推荐。
 
-需要外部对照的新计划也可能适用。普通 Bug 修复、格式调整、摘要、翻译、重构和方案已定的
-实现，不应因此启动调查；用户要求只使用提供的资料时，应优先遵守。回答语言跟随用户。
-这些是输入示例，不是自动触发成功的测试记录。
+## 其他文档与许可
 
-## Evidence-First 核实原则与限制
+[更多案例与原始记录](docs/examples.md) · [现有工作流比较](docs/comparison.md) ·
+[评测方法](evals/README.md) · [M4 历史发布准备](docs/release-preparation.md)
 
-默认上限为 6 条搜索查询、8 份不同的外部证据文档，通常列出 3～5 个候选。
-这是指令约束，不是程序强制保证。搜索摘要只作为线索；重要结论需要实际成功读取来源，
-并获得直接证据支持。计划中的功能和可用于集成的 API 不等于已经完成的工作流。
-部分相似不等于完全替代；一次搜索没找到，也不代表不存在。
+英文为主要维护版本，翻译保留相同结论和限制。核心指令见 [SKILL.md](skills/prior-scout/SKILL.md)，
+开发约束见 [AGENTS.md](AGENTS.md)。公开仓库不包含私有原始证据和原始开发 Git 历史。
 
-回答前会核对结论与证据，修正、标为未核实或删除缺乏依据的内容；不强制每个候选都具有
-两份来源、数值评分或冗长检查表。它无法保证找到所有相关成果，也不能完全消除模型幻觉。
-
-## 主要功能
-
-- 围绕目的、功能、方法及合适的同义词搜索。
-- 阅读可靠资料，区分“来源存在”与“来源支持这项结论”。
-- 区分托管服务、可安装应用、Skill、SDK、论文和 Demo。
-- 确认功能属于哪个交付物、版本或服务套餐。
-- 保留已证实的事实，说明未知项，并在限定的搜索预算内停止。
-- 比较完成后，继续用户已经授权的其他任务。
-
-它不判断创新性、法律地位、研究价值、商业可行性，也不替用户决定采用哪个方案。
-它不会自动提出改进方向、运行候选工具或开启新一轮研究。反向图片搜索、歌曲识别、
-文件去重和全面的文献综述不在其范围内。
-
-## 宿主环境要求
-
-宿主需要能够加载 Agent Skills，并提供搜索和来源读取工具；输入文档也必须能被宿主读取。
-Prior-Scout 本身不包含搜索引擎、解析器、运行时依赖、账号、付费 API 集成或遥测。
-来源或工具不可用时，应说明限制，而不是编造已经完成的核实。
-
-## 实际示例与证据
-
-- [软件功能归属](evals/runs/evidence-regression-ef02-r1-20261022.md)：固定版本的软件包
-  FAQ 不支持内置协作，但提供 API 供宿主应用自行实现；此前的读取失败记录仍然保留。
-- [研究系统](evals/runs/release-audit-20261022.md#q3)：区分行人导航方法、原研究实际
-  评估的内容，以及应用程序是否可获取。
-- [消费类工作流](evals/runs/release-audit-20261022.md#q6)：区分解析粘贴的完整食谱，
-  与仅接受已经整理好的食材字段。
-
-这些是实际记录的输出，不是经过润色后替换的答案，也不是候选工具的运行测试。
-完整输入、输出、来源和限制见[示例](docs/examples.md)与[评测结果](evals/results.md)。
-
-## 测试与结果
-
-发布审查完成了 14 个范围受限的案例：8 个质量任务和 6 个选用控制。
-审查在这个样本中未发现重要的无依据或虚构主张，但这不是准确率。
-测试使用新的子上下文，仍共享宿主指令，也没有完整记录模型最初看到的全部提示。
-观察到指令文件被使用，不代表已经证明顶层原生自动选用；结构化加载仍未确定。
-独立 A/B/C 比较、保留集评测、跨宿主可靠性、所找到工具的实际运行情况、精确成本，
-以及相对于普通提示词的质量优势，均尚未验证。
-
-## 现有替代方案与项目定位
-
-现有工作流也会搜索并核实来源。Prior-Scout 的取舍是聚焦简短比较与明确的停止条件，
-不附加采用决策或商业分析。请参阅[现有工作流的文档比较](docs/comparison.md)。
-
-## 许可与开发
-
-采用 MIT License。Copyright (c) 2026 orange-clockwork。完整英文条款见 [LICENSE](LICENSE)，
-[可安装目录中的副本](skills/prior-scout/LICENSE)包含相同声明。第三方名称与链接资料的
-权利仍归各权利人所有；本项目不分发上游来源全文。
-
-核心文件为 [SKILL.md](skills/prior-scout/SKILL.md)。开发约束见 [AGENTS.md](AGENTS.md)，
-评测方法的限制见[评测说明](evals/README.md)。公开仓库不包含原始开发 Git 历史或私有原始记录。
-[发布准备报告](docs/release-preparation.md)保留 M4 当时的状态；
-当前发布验证结果见[发布清单](docs/release-checklist.md)。
+MIT License。Copyright (c) 2026 orange-clockwork。[根目录 LICENSE](LICENSE) 和
+[可安装副本](skills/prior-scout/LICENSE)条款一致。第三方名称与链接资料的权利仍归各权利人；
+本项目不分发上游来源全文。
