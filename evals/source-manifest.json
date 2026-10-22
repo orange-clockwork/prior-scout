@@ -1,0 +1,221 @@
+{
+  "note": "Source identifiers and hashes only; full third-party files are not bundled. Initial snapshots were present at handoff; hashes and upstream commit heads were checked during this milestone. Retrieval timestamps describe the retained snapshots.",
+  "sources": [
+    {
+      "file": "baseline-SKILL.md",
+      "url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/SKILL.md",
+      "final_url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/SKILL.md",
+      "retrieved_utc": "2026-10-21T00:04:42.763571+00:00",
+      "commit": "cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0",
+      "sha256": "92ef1ffc20e02b7cc9c45c3228bb37c64c3c0eecb5e86ed5ac271bcf38268d38",
+      "bytes": 14291
+    },
+    {
+      "file": "baseline-evidence.md",
+      "url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/references/evidence-and-currentness.md",
+      "final_url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/references/evidence-and-currentness.md",
+      "retrieved_utc": "2026-10-21T00:04:42.999654+00:00",
+      "commit": "cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0",
+      "sha256": "63cc8413bbb069e36abe6cd51f5f7fce58edececa49dbca4b6e174379b0e1f6c",
+      "bytes": 5096
+    },
+    {
+      "file": "baseline-dimensions.md",
+      "url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/references/evaluation-dimensions.md",
+      "final_url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/references/evaluation-dimensions.md",
+      "retrieved_utc": "2026-10-21T00:04:43.225283+00:00",
+      "commit": "cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0",
+      "sha256": "dc38f8e935df376871ecffe821eea793093998ba1738af7c553f3f5aed01fea7",
+      "bytes": 3875
+    },
+    {
+      "file": "baseline-template.md",
+      "url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/assets/solution-decision-template.md",
+      "final_url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/claude/.claude/skills/evaluate-existing-solutions/assets/solution-decision-template.md",
+      "retrieved_utc": "2026-10-21T00:04:43.444413+00:00",
+      "commit": "cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0",
+      "sha256": "fdbc008f0554c47fd74377efc795517922b7e9e7485644d13de957c96c0d2a7c",
+      "bytes": 2598
+    },
+    {
+      "file": "prior-art-SKILL.md",
+      "url": "https://raw.githubusercontent.com/bendrucker/claude/6b52c83523ade8a82850fb0fe92c1888ff8ea81e/plugins/research/skills/prior-art/SKILL.md",
+      "final_url": "https://raw.githubusercontent.com/bendrucker/claude/6b52c83523ade8a82850fb0fe92c1888ff8ea81e/plugins/research/skills/prior-art/SKILL.md",
+      "retrieved_utc": "2026-10-21T00:04:43.691502+00:00",
+      "commit": "6b52c83523ade8a82850fb0fe92c1888ff8ea81e",
+      "sha256": "a38dcd139b6cbd5ca897e452b391e356e40d62bcff45360ea5be84dbad7241f2",
+      "bytes": 2512
+    },
+    {
+      "file": "cli-package.json",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/package.json",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/package.json",
+      "retrieved_utc": "2026-10-21T00:04:43.892530+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "2bbfaf07934965b263298d758b35b3824567c0aad4e8fe9cb944c34c450bd117",
+      "bytes": 3173
+    },
+    {
+      "file": "cli-README.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/README.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/README.md",
+      "retrieved_utc": "2026-10-21T00:04:44.102858+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "c390c105dcd4e8acd4af3daefc65a095a91ecfc164267da9c985f9d654131f10",
+      "bytes": 4923
+    },
+    {
+      "file": "cli-commands.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/commands.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/commands.md",
+      "retrieved_utc": "2026-10-21T00:04:44.310483+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "71ad5ca1e255e2ddb0fed482b5c7bc02ec2b1420978a13115e0096bdc238998c",
+      "bytes": 14369
+    },
+    {
+      "file": "cli-creating.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/creating-skills.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/creating-skills.md",
+      "retrieved_utc": "2026-10-21T00:04:44.556331+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "0b3250a83c63f7485d78074b98aeba8ed9ed8095cfff1004ebc65bfdcee23162",
+      "bytes": 3597
+    },
+    {
+      "file": "cli-agents.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/agents.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/agents.md",
+      "retrieved_utc": "2026-10-21T00:04:44.781609+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "27df62d55936de930a04fcd219b926e1053cd94657c6b54ee6b87a32d0d9860a",
+      "bytes": 9638
+    },
+    {
+      "file": "cli-troubleshooting.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/troubleshooting.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/docs/troubleshooting.md",
+      "retrieved_utc": "2026-10-21T00:04:44.995236+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "d789a2ef063d825e01ff2a8ecde3394327b05f81f52a159abbb3c0c3900465e5",
+      "bytes": 1925
+    },
+    {
+      "file": "find-skills-SKILL.md",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/skills/find-skills/SKILL.md",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/skills/find-skills/SKILL.md",
+      "retrieved_utc": "2026-10-21T00:04:45.203509+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "c00eeea0e13e74fe4a9d84ba0a8542205a1b736d65f13134fe1a6647eb14976f",
+      "bytes": 5472
+    },
+    {
+      "file": "cli-LICENSE",
+      "url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/vercel-labs/skills/a80e4c9d12d607631249d4d7d059f835d4b2f13a/LICENSE",
+      "retrieved_utc": "2026-10-21T00:04:45.410817+00:00",
+      "commit": "a80e4c9d12d607631249d4d7d059f835d4b2f13a",
+      "sha256": "661142e53c313d2bb5e1b055f5c0a39001450ff1b5e27b89dc4bc7de9a6352ca",
+      "bytes": 1069
+    },
+    {
+      "file": "excalidraw-README.md",
+      "url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/README.md",
+      "final_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/README.md",
+      "retrieved_utc": "2026-10-21T00:04:45.953279+00:00",
+      "commit": "6f0a4d19b577e781ee5491d6cb89799b3fba7ee8",
+      "sha256": "011eea74cbbf38fd263ec93a221f379466c557dc7587acfe93797201193a7e7a",
+      "bytes": 7774
+    },
+    {
+      "file": "excalidraw-FAQ.mdx",
+      "url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/dev-docs/docs/@excalidraw/excalidraw/faq.mdx",
+      "final_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/dev-docs/docs/@excalidraw/excalidraw/faq.mdx",
+      "retrieved_utc": "2026-10-21T00:04:46.188673+00:00",
+      "commit": "6f0a4d19b577e781ee5491d6cb89799b3fba7ee8",
+      "sha256": "95713e1f0a781fc53db53c6c9bf740df5f888f71b39c34546a00ef8047caba11",
+      "bytes": 2336
+    },
+    {
+      "file": "excalidraw-LICENSE",
+      "url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/excalidraw/excalidraw/6f0a4d19b577e781ee5491d6cb89799b3fba7ee8/LICENSE",
+      "retrieved_utc": "2026-10-21T00:04:46.426953+00:00",
+      "commit": "6f0a4d19b577e781ee5491d6cb89799b3fba7ee8",
+      "sha256": "1352d204fdb90d5e482c13139d848bc2c9300a9a7de358a0a558a23e72d0d8be",
+      "bytes": 1067
+    },
+    {
+      "file": "specification.html",
+      "url": "https://agentskills.io/specification",
+      "final_url": "https://agentskills.io/specification",
+      "retrieved_utc": "2026-10-21T00:04:46.579322+00:00",
+      "sha256": "22f25a748fbb71d0b47742cba8d5d920310375d3ce879b121db2947680562b6c",
+      "bytes": 459561
+    },
+    {
+      "file": "codex-skills.md",
+      "url": "https://learn.chatgpt.com/docs/build-skills.md",
+      "final_url": "https://learn.chatgpt.com/docs/build-skills.md",
+      "retrieved_utc": "2026-10-21T00:04:46.831136+00:00",
+      "sha256": "ed6e324f747d47adf6f60ee1fca13ba469b3671f55f58c3a78f35947af6919d5",
+      "bytes": 11035
+    },
+    {
+      "file": "codex-evals.html",
+      "url": "https://developers.openai.com/blog/eval-skills",
+      "final_url": "https://developers.openai.com/blog/eval-skills",
+      "retrieved_utc": "2026-10-21T00:04:46.920022+00:00",
+      "sha256": "a9ac0c81743c861e5a07c9d093a8780614cce66ff80385f725c425e8a3bf4197",
+      "bytes": 386417
+    },
+    {
+      "file": "skills-faq.html",
+      "url": "https://skills.sh/docs/faq",
+      "final_url": "https://www.skills.sh/docs/faq",
+      "retrieved_utc": "2026-10-21T00:04:47.069665+00:00",
+      "sha256": "6bc54402a845d5141288ad85139255473b9703d8e0085a09231e6dcab996fc76",
+      "bytes": 44441
+    },
+    {
+      "file": "baseline-LICENSE",
+      "url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/citypaul/.dotfiles/cd4028d57d6e4e95814f7b8ee55ca13c23a9c2f0/LICENSE",
+      "retrieved_utc": "2026-10-21T00:09:08.971293+00:00",
+      "sha256": "58dcc6879ff8eb10fc3f0d269c22ada0ac50d25be578f41a6dcbc6be4a31702a",
+      "bytes": 1401
+    },
+    {
+      "file": "prior-art-LICENSE",
+      "url": "https://raw.githubusercontent.com/bendrucker/claude/6b52c83523ade8a82850fb0fe92c1888ff8ea81e/LICENSE",
+      "final_url": "https://raw.githubusercontent.com/bendrucker/claude/6b52c83523ade8a82850fb0fe92c1888ff8ea81e/LICENSE",
+      "retrieved_utc": "2026-10-21T00:09:09.211725+00:00",
+      "sha256": "38bf9a40ce88e2a5f42d2e036b14f383f9e7f03dbb916d9704be94fa6fedda8d",
+      "bytes": 1068
+    },
+    {
+      "file": "mit-template.html",
+      "url": "https://choosealicense.com/licenses/mit/",
+      "final_url": "https://choosealicense.com/licenses/mit/",
+      "retrieved_utc": "2026-10-21T00:09:09.726936+00:00",
+      "sha256": "89571a287dc998b524aef8bcb2de166157b2508497f8840699803d4f3ff13a0b",
+      "bytes": 25530
+    },
+    {
+      "file": "umap-abstract.html",
+      "url": "https://arxiv.org/abs/1802.03426",
+      "final_url": "https://arxiv.org/abs/1802.03426",
+      "retrieved_utc": "2026-10-21T00:09:09.772126+00:00",
+      "sha256": "4b1bc638a5718edc3d290eebe62745a026bff021906f220adbe84728436e40af",
+      "bytes": 41001
+    },
+    {
+      "file": "umap-README.rst",
+      "url": "https://raw.githubusercontent.com/lmcinnes/umap/master/README.rst",
+      "final_url": "https://raw.githubusercontent.com/lmcinnes/umap/master/README.rst",
+      "retrieved_utc": "2026-10-21T00:09:09.994050+00:00",
+      "sha256": "94d22bb5ebadf8f642ac9c6215d10f84eb50adaf38dac88e8d0a8cb2d26573c3",
+      "bytes": 22261
+    }
+  ]
+}
