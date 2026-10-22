@@ -13,26 +13,38 @@ Prior-Scout（先例探索）は、開発前に既存の選択肢を調べるた
 
 ## 実際の動作例
 
-`0.1.1-experimental` を使った 2026-10-22 の監査から、実際の入力を日本語に訳しています。
+以下は、**ユーザーから報告された Prior-Scout の使用例**をまとめたものです。
+今回の文書更新では、元資料を別途確認しました。各セッションの入力原文や生ログは
+このリポジトリに保存されておらず、会話の再現や独立した性能試験ではありません。
 
-> Markdown のリンクチェッカーを実装する前に、既存のオープンソースの選択肢を探し、
-> 関連する違いを説明してください。その後、元のチェッカーの簡単な実装方針をまとめてください。
-> ファイルは変更しないでください。
+### Demo 01 — Prior-Scout は自分に似た Skill を見つけられるか？
 
-**結果の要約** — 記録された回答を短くまとめた日本語訳です。
+開発後、作者は Prior-Scout を使って似たワークフローを調べました。代表的な3件です。
 
-| 候補 | 資料で確認できたこと | 用途に関わる違い |
-| --- | --- | --- |
-| [Lychee](https://github.com/lycheeverse/lychee) — CLI／ライブラリ | Markdown、HTML、Web サイトのリンクを検査する。 | アンカーの検査には `--include-fragments` が必要。JavaScript が生成するアンカーは検査できない。[資料](https://lychee.cli.rs/recipes/anchors/) |
-| [markdown-link-check](https://github.com/tcort/markdown-link-check) — Node.js CLI／ライブラリ | リンクの到達可能性を検査し、HTTP 設定や再試行に対応する。 | 読み取った README では、別ファイルの見出しの検証は**確認できなかった**。 |
-| [remark-validate-links](https://github.com/remarkjs/remark-validate-links) — remark プラグイン | ローカルのファイル、画像、見出しをオフラインで検査する。 | **別ファイルの見出しの検査は remark CLI で利用でき、Node API では利用できない。** 外部 URL は対象外。 |
+- **[search-first](https://github.com/affaan-m/ECC/blob/main/skills/search-first/SKILL.md)：** 実装前に既存の成果を調べる点で近く、採用・拡張・新規開発の判断から実装まで進みます。
+- **[priorart](https://github.com/duthaho/skillhub/blob/main/.claude/skills/priorart/SKILL.md)：** 既存のアイデアを調べる点で近く、根拠の所在、調査上限、開発・フォーク・利用などの判断を求めます。
+- **[find-skills](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md)：** 一部が重なります。導入可能な Skill の発見とインストールの提案が中心で、より広い関連成果の比較とは範囲が異なります。
 
-機能が資料で裏付けられているか、どの利用方法で使えるか、何が未確認かまで区別します。
-比較後は、依頼されていた元の実装方針に戻りました。
+**独自性を作り出さず、実際の重なりを示す。** Prior-Scout は根拠付きの短い比較で調査を
+区切り、許可された元の作業に戻ります。これは対象範囲の選択であり、優位性の証明では
+ありません。開発後の確認なので、開発前に何を調べたかも証明しません。
+[全5候補・報告された調査量・資料の確認](docs/examples.md#demo-01-agent-skill-discovery)。
 
-この過去のサブエージェント実行では、**検索クエリ2件、外部根拠文書4件**を使用しました。
-候補ツールのインストールや実行はしていません。資料に基づく確認であり、精度の測定や
-ネイティブ自動選択の証明ではありません。[入力原文・資料・制約](docs/examples.md#t2-markdown-link-checker)。
+### Demo 02 — 歩行者ナビゲーション研究の関連文献を探す
+
+作者が計画中の修士研究は、経路全体の案内、方向と距離の案内、目的地のみの提示を
+比較します。報告された3件から、研究手法まで比較する必要性が分かります。
+
+- **[Robinson ら（2012）](https://cronfa.swansea.ac.uk/Record/cronfa17385/Download/0017385-18012016145442.pdf) — 全文：** 方向を伝える触覚フィードバックと経路選択。計画中の3条件を比較した研究ではありません。
+- **[Sugimoto ら（2022）](https://ist.ksc.kwansei.ac.jp/~nagata/data/sugimoto_2021_spat_cogn_comput.pdf) — 全文：** スマートフォン地図・紙地図と空間記憶。媒体の違いから情報量だけの効果は切り分けられません。
+- **[Heller ら（2020）](https://www.krisluyten.net/publications/dblp_conf_mhci_helleral20/) — 要旨のみ：** 音声による案内、移動効率、作業負荷。測定の詳細はここでは未確認です。
+
+**テーマが似ていても、実験条件や測定指標が同じとは限りません。** 修士研究は計画段階で、
+公表済みの結果や新規性の判定ではありません。[詳しい比較](docs/examples.md#demo-02-pedestrian-navigation-research)では、
+元の観察と、今回追加で行った Ishikawa & Takahashi（2014）の文献確認を分けています。
+
+以前の [Markdown リンクチェッカー T2 の例](docs/examples.md#t2-markdown-link-checker)も、
+保存済みの監査記録とともに残しています。
 
 ## インストールと使い方
 
@@ -49,7 +61,7 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex
 `.agents/skills/prior-scout/` で、SKILL.md と MIT LICENSE が含まれます。
 
 そのプロジェクトで新しい Codex 会話を開き、Skill を明示的に指定してください。
-次は呼び出し方の例であり、上記の過去の入力とは別です。
+次は呼び出し方の例であり、上記2件の入力原文ではありません。
 
 > $prior-scout を使って、既存のオープンソースの Markdown リンクチェッカーを探してください。
 > 信頼できる資料を読み、確認できた共通点と重要な違いを簡潔に説明してください。

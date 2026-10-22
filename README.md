@@ -13,26 +13,41 @@ services, skills, libraries or research implementations.
 
 ## See it in action
 
-A real task from the 2026-10-22 audit, using `0.1.1-experimental`:
+These are summaries of **user-reported Prior-Scout sessions**, with primary sources
+checked separately for this documentation update. Their exact prompts and raw traces
+are not archived here. They are not transcripts or independent performance tests.
 
-> Before implementing a Markdown link checker, first find existing open-source solutions and explain their relevant differences. Then write a short implementation outline for my original checker. Do not change files.
+### Demo 01 — Can Prior-Scout Find Its Own Competitors?
 
-**Result summary** — shortened from the recorded answer:
+After developing Prior-Scout, its author asked it to investigate similar workflows.
+Three representative matches:
 
-| Candidate | What the sources supported | Difference that matters |
-| --- | --- | --- |
-| [Lychee](https://github.com/lycheeverse/lychee) — CLI / library | Checks Markdown, HTML and website links. | Anchor checks require `--include-fragments`; JavaScript-generated anchors cannot be checked. [Docs](https://lychee.cli.rs/recipes/anchors/) |
-| [markdown-link-check](https://github.com/tcort/markdown-link-check) — Node.js CLI / library | Checks link availability; offers HTTP settings and retries. | Cross-file heading validation was **not established** by the README reviewed. |
-| [remark-validate-links](https://github.com/remarkjs/remark-validate-links) — remark plugin | Checks local files, images and headings offline. | **Cross-file heading checks work through the remark CLI, not the Node API.** External URLs are outside its scope. |
+- **[search-first](https://github.com/affaan-m/ECC/blob/main/skills/search-first/SKILL.md):** closely overlaps with research before coding; continues into adopt/extend/build decisions and implementation.
+- **[priorart](https://github.com/duthaho/skillhub/blob/main/.claude/skills/priorart/SKILL.md):** closely overlaps with checking existing ideas; requires evidence locators, a bounded search and a build/fork/use-style verdict.
+- **[find-skills](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md):** partial overlap; discovers installable Skills and offers installation, rather than a broader related-work comparison.
 
-The useful distinction is which capabilities are documented, which usage mode
-provides them, and what remains unconfirmed. The answer then returned to the
-requested implementation outline.
+**Real overlap, not manufactured originality.** Prior-Scout stops at a brief,
+evidence-backed comparison and returns to authorized work; that is a scope choice,
+not proven superiority. This retrospective check does not establish what was checked
+before development. [All five candidates, reported budget and source checks](docs/examples.md#demo-01-agent-skill-discovery).
 
-This historical subagent task used **2 queries and 4 external evidence documents**.
-No candidate tool was installed or executed. These are documentation findings,
-not accuracy measurements or proof of native automatic selection.
-[Full example, sources and limits](docs/examples.md#t2-markdown-link-checker).
+### Demo 02 — Finding Related Research for a Pedestrian Navigation Study
+
+The author's proposed master's study compares full-route, direction-and-distance,
+and destination-only guidance. Three reported matches illustrate why related topics
+need a closer methodological comparison:
+
+- **[Robinson et al. (2012)](https://cronfa.swansea.ac.uk/Record/cronfa17385/Download/0017385-18012016145442.pdf) — full text:** directional haptics and route choice; not a comparison of the proposed three conditions.
+- **[Sugimoto et al. (2022)](https://ist.ksc.kwansei.ac.jp/~nagata/data/sugimoto_2021_spat_cogn_comput.pdf) — full text:** smartphone versus paper maps and spatial memory; media differences do not isolate information quantity.
+- **[Heller et al. (2020)](https://www.krisluyten.net/publications/dblp_conf_mhci_helleral20/) — abstract only:** audio guidance, efficiency and workload; detailed measures remain unverified here.
+
+**Similar topics do not mean equivalent conditions or measures.** This is a research
+proposal, not a published result or a novelty verdict. The
+[detailed comparison](docs/examples.md#demo-02-pedestrian-navigation-research) separates
+the original observations from an additional editorial check of Ishikawa & Takahashi (2014).
+
+The earlier [Markdown link-checker T2 demo](docs/examples.md#t2-markdown-link-checker)
+remains available with its archived audit record.
 
 ## Install & Usage
 
@@ -48,7 +63,7 @@ do not add `-g`. The install target is `.agents/skills/prior-scout/`, including
 SKILL.md and MIT LICENSE.
 
 Open a new Codex conversation in that project and explicitly request the Skill.
-This is an illustrative invocation, separate from the historical Demo input:
+This is an illustrative invocation, not an original prompt from either Demo:
 
 > Use $prior-scout to find existing open-source Markdown link checkers.
 > Read reliable sources and briefly explain verified similarities and important differences.

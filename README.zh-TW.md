@@ -12,25 +12,36 @@ Prior-Scout（先例探索）是一個只含指示的小型 Agent Skill，協助
 
 ## 看實際案例
 
-以下取自 2026-10-22 使用 `0.1.1-experimental` 的真實審查案例；輸入已譯為繁體中文。
+以下整理自**使用者回報的 Prior-Scout 執行觀察**；本輪文件更新另行核對原始來源。
+這些場次的確切輸入與原始執行紀錄尚未保存在此儲存庫，因此不是逐字重現或獨立效能測試。
 
-> 在實作 Markdown 連結檢查器前，先找現有開源方案並說明相關差異。
-> 接著為我原本的檢查器寫一份簡短實作大綱。不要修改檔案。
+### Demo 01 — Prior-Scout 能找到自己的同類方案嗎？
 
-**結果摘要** — 根據當時記錄的回答刪節、翻譯：
+開發完成後，作者用 Prior-Scout 回頭調查相似工作流程。三個代表性候選：
 
-| 候選 | 來源支持的功能 | 影響使用的重要差異 |
-| --- | --- | --- |
-| [Lychee](https://github.com/lycheeverse/lychee) — CLI／函式庫 | 檢查 Markdown、HTML 與網站連結。 | 錨點檢查須啟用 `--include-fragments`；不能檢查 JavaScript 動態產生的錨點。[文件](https://lychee.cli.rs/recipes/anchors/) |
-| [markdown-link-check](https://github.com/tcort/markdown-link-check) — Node.js CLI／函式庫 | 檢查連結可用性，提供 HTTP 設定及重試。 | 當次閱讀的 README **尚未證實**跨檔案標題驗證能力。 |
-| [remark-validate-links](https://github.com/remarkjs/remark-validate-links) — remark 外掛 | 離線檢查本機檔案、圖片與標題。 | **跨檔案標題檢查須透過 remark CLI，Node API 不提供這項能力。** 外部網址不在範圍內。 |
+- **[search-first](https://github.com/affaan-m/ECC/blob/main/skills/search-first/SKILL.md)：** 與「開發前先查既有成果」高度重疊，接著會做採用／擴充／自行開發判斷並進入實作。
+- **[priorart](https://github.com/duthaho/skillhub/blob/main/.claude/skills/priorart/SKILL.md)：** 與既有構想查找高度重疊，要求可定位的證據、有限搜尋預算，以及自行開發／Fork／採用等結論。
+- **[find-skills](https://github.com/vercel-labs/skills/blob/main/skills/find-skills/SKILL.md)：** 部分重疊；重點是尋找可安裝的 Skill 並提供安裝選項，範圍不同於較廣的相關成果比較。
 
-重點是確認功能有沒有文件支持、屬於哪種使用方式，以及哪些能力仍未證實。
-比較完成後，回答接回原本已要求的實作大綱。
+**承認真實重疊，不製造原創性。** Prior-Scout 在簡短、有證據的比較後停止調查，接回已授權
+工作；這是範圍選擇，不是已證明的優勢。這次回顧發生在開發之後，不能證明當初開發前做過
+同樣檢查。[完整五個候選、回報預算與來源查證](docs/examples.md#demo-01-agent-skill-discovery)。
 
-這次歷史子代理任務使用 **2 個搜尋查詢、4 份外部證據文件**，沒有安裝或執行候選工具。
-這是文件查證結果，不是準確率測量或原生自動選用的證明。
-[完整案例、來源與限制](docs/examples.md#t2-markdown-link-checker)。
+### Demo 02 — 為行人導航研究查找相關文獻
+
+作者規劃中的碩士研究比較完整路線引導、方向與距離引導、僅顯示目的地三種條件。
+回報中的三篇研究，說明為什麼不能只比較題目：
+
+- **[Robinson 等人（2012）](https://cronfa.swansea.ac.uk/Record/cronfa17385/Download/0017385-18012016145442.pdf) — 全文：** 觸覺方向提示與自主選路；並未比較上述三種研究條件。
+- **[Sugimoto 等人（2022）](https://ist.ksc.kwansei.ac.jp/~nagata/data/sugimoto_2021_spat_cogn_comput.pdf) — 全文：** 手機／紙本地圖與空間記憶；媒介差異不能單獨歸因於資訊量。
+- **[Heller 等人（2020）](https://www.krisluyten.net/publications/dblp_conf_mhci_helleral20/) — 僅摘要：** 聲音導航、效率與工作負荷；此處未核實詳細測量方式。
+
+**主題相近，不等於實驗條件或測量指標相同。** 碩士研究仍是提案，不是已發表結果，也未據此
+判定新穎性。[詳細比較](docs/examples.md#demo-02-pedestrian-navigation-research)將原始觀察與本輪額外
+查證的 Ishikawa & Takahashi（2014）分開呈現。
+
+先前的 [Markdown 連結檢查器 T2 案例](docs/examples.md#t2-markdown-link-checker)及其已保存
+審查紀錄仍完整保留。
 
 ## 安裝與使用
 
@@ -45,7 +56,7 @@ npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex
 安裝位置為 `.agents/skills/prior-scout/`，包含 SKILL.md 與 MIT LICENSE。
 
 在該專案開啟新的 Codex 對話，明確指定使用 Skill。
-以下是呼叫示例，與上方歷史 Demo 的原始輸入不同：
+以下是呼叫示例，不是上方兩個 Demo 的原始輸入：
 
 > 使用 $prior-scout，尋找現有的開源 Markdown 連結檢查器。
 > 閱讀可靠來源，簡短說明已核實的相似處與重要差異。
