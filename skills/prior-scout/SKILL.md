@@ -78,6 +78,12 @@ paper, author project page, or author-published implementation.
 Search summaries are leads, not proof. Inspect code only for a narrow material
 question that the documentation cannot resolve; avoid an unsolicited code audit.
 
+Prefer URLs supplied by the user, returned by search, or linked from a successfully
+read first-hand source. Do not guess documentation paths or URL slugs. If the
+relevant page is not linked, search for its URL or follow source navigation within
+the budget. If it remains inaccessible, state the limitation; never present an
+unsuccessful or speculative URL as verified evidence.
+
 Check that the successfully read source and cited URL identify the intended
 object, author, repository, or paper. A real URL alone does not verify a claim.
 Never invent names, repositories, URLs, paper identifiers, or source contents.
