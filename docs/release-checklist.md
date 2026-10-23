@@ -4,6 +4,36 @@ The user separately authorized the clean initial commit, private staging, and
 public release. This checklist records the checks; it grants no authorization.
 The [M4 report](release-preparation.md) preserves the earlier preparation snapshot.
 
+## v0.3.0-experimental publication — 2026-10-24
+
+The user explicitly approved publication after local preparation: recheck remote
+and candidate, update publication wording, integrate and push main, create an
+annotated tag and GitHub **Pre-release**, then verify public files and a fresh
+project installation. No skills.sh submission or evaluation-branch push.
+
+Pre-publication checks confirmed remote main remains
+`b141fc0cd3ebe252217adf39cd2279f785f60201`, with only the existing v0.2.0 tag and
+release. The candidate contains exactly `e2b8b2a` (frozen V03) and `836356e`
+(release documentation) above that baseline. Final publication wording is a
+separate scoped commit. Main integration uses fast-forward only; push commands
+name main and v0.3.0-experimental explicitly, never all branches or all tags.
+The unpublished evaluation branches remain excluded.
+
+Core SHA-256 remains
+`4a443a1717c8cde4a832ba3dcde52410f3ecb08ab33fa14e742cac8164f1a808`;
+only metadata differs from evaluated V03. The name, description, instructions,
+licenses and historical evaluation artifacts are unchanged by publication.
+Four-language commands, local links, privacy and scoped-diff checks are rerun.
+The installation check uses existing Skills CLI 1.7.4 with telemetry disabled,
+a fresh disposable project and exact public core/LICENSE byte comparison.
+No global installation, native model test or expensive evaluation is included.
+
+This committed section records authorization and the publication procedure;
+post-publication success is verified separately and reported on the
+[GitHub Pre-release](https://github.com/orange-clockwork/prior-scout/releases/tag/v0.3.0-experimental).
+The local preparation section below is a preserved historical checkpoint,
+including its earlier authorization boundary and NOT RUN results.
+
 ## v0.3.0-experimental local preparation — 2026-10-24
 
 Status: **READY for final publication approval**, local preparation only.

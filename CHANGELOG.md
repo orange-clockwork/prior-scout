@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0-experimental — local release candidate, 2026-10-24
+## 0.3.0-experimental — 2026-10-24
 
 - Integrate the frozen V03 Evidence-Gated Workflow: search leads, acquired source
   content and supported claims are separate stages.
@@ -12,8 +12,8 @@
   2/6 and 4/6 PASS. Both fail both Gemini live source-verification cases. Small,
   exposed, single-run conditions do not establish statistical superiority or
   general reliability. No model evaluation was rerun for release preparation.
-- Local preparation only; public V01 remains unchanged. See the
-  [release-notes draft](docs/release-notes-v0.3.0-experimental.md) and
+- Experimental pre-release `v0.3.0-experimental`. See the
+  [release notes](docs/release-notes-v0.3.0-experimental.md) and
   [validation record](evals/releases/v0.3.0-experimental.md).
 
 ## 0.2.0-experimental — 2026-10-23

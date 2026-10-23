@@ -8,7 +8,7 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 提供需求、网址或可读文档，它会搜索公开来源、核实相关功能，简要比较工具、服务、Skill、
 库或研究实现的相似点和关键差异。
 
-**`0.3.0-experimental` · 本地发布候选版 · MIT**
+**`0.3.0-experimental` · 实验版 · MIT**
 
 ## 看实际案例
 
@@ -47,10 +47,9 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 
 ## 安装与使用
 
-此 checkout 基于冻结的 V03 准备 `0.3.0-experimental`，尚未发布。
-GitHub 公开 `main` 仍提供 `0.2.0-experimental`（V01）。以下命令安装可能变动的
-公开分支，不是此本地候选版；候选版请使用后面的本地安装命令。
-历史安装和使用观察只适用于各记录标明的版本。
+以下命令安装 GitHub 公开 `main`，内容可能在发布后更新。
+固定版本的发布为 [v0.3.0-experimental](https://github.com/orange-clockwork/prior-scout/releases/tag/v0.3.0-experimental)，
+采用冻结的 V03 Evidence-Gated Workflow。安装和使用证据只适用于各记录的版本及验证范围。
 
 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本；
 宿主须支持 Agent Skills 加载、搜索和来源读取。请在目标项目中执行：
@@ -81,7 +80,7 @@ npx skills@1.7.4 list -a codex
 
 </details>
 
-本地候选版请在另一个目标项目中安装，先确认没有同名 Skill。
+从本地发布 checkout 安装时，也请在另一个目标项目中操作，先确认没有同名 Skill。
 将 `/path/to/release-checkout` 替换为位于 `codex/release-v0.3.0-experimental`
 分支的 checkout 路径：
 
@@ -89,9 +88,10 @@ npx skills@1.7.4 list -a codex
 npx skills@1.7.4 add /path/to/release-checkout --skill prior-scout -a codex --copy -y
 ```
 
-本次 smoke test 直接复用已有 Skills CLI 1.7.4，没有通过 npx 新下载工具。
-验证范围是项目安装及文件可读；全新 Codex 原生加载、自动选用，以及此版本的在线安装
-均为 **NOT RUN**。[验证记录](evals/releases/v0.3.0-experimental.md)。
+准备阶段的 smoke test 直接复用已有 Skills CLI 1.7.4，没有通过 npx 新下载工具，
+验证了项目安装及文件可读。该检查点的全新 Codex 原生加载、自动选用及此版本在线安装
+均为 **NOT RUN**。发布时另行验证公开文件及全新项目安装；两者均不代表原生使用通过。
+[准备阶段记录](evals/releases/v0.3.0-experimental.md)。
 
 ## 工作流程
 
@@ -116,7 +116,7 @@ URL 或工具成功状态本身不代表已取得来源内容。“未报告”�
 ## 证据与限制
 
 - **V03 Evidence-Gated Workflow：** 区分线索、取得的内容和有支持的结论。已有的小规模 supplied-instruction 比较中，Codex Sol High：V01 **4/4 PASS**、V03 **4/4 PASS**；Gemini Flash Low：V01 **2/6 PASS**、V03 **4/6 PASS**。Gemini 的两个实时来源验证案例，两版均失败。案例已曝光、每条件只运行一次，且由协调者人工非盲评分，不能证明统计优越性、普遍兼容或生产级可靠性。[证据与验证](evals/releases/v0.3.0-experimental.md)。
-- **本地封装验证：** 项目发现、复制安装及安装内容一致，与原生加载、行为表现分开记录。来源访问、能否确实依据证据限制结论，以及宿主工具支持仍有限制。[发布说明草稿](docs/release-notes-v0.3.0-experimental.md)。
+- **本地封装验证：** 项目发现、复制安装及安装内容一致，与原生加载、行为表现分开记录。来源访问、能否确实依据证据限制结论，以及宿主工具支持仍有限制。[发布说明](docs/release-notes-v0.3.0-experimental.md)。
 
 - **历史 V01 / M1 安全基线：** 新增来源 URL 出处指引，证据包括有限安全基线、8 次原版／候选比较及 4 个最终正向控制。普通格式整理案例没有工具调用，原生选用仍为 INCONCLUSIVE。这不代表完全防止 Prompt Injection，也未测量错误率下降。Claude Code、Cursor 和 Gemini CLI 兼容性为 **NOT TESTED**。[候选审查](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
@@ -131,7 +131,7 @@ URL 或工具成功状态本身不代表已取得来源内容。“未报告”�
 
 ## 其他文档与许可
 
-[发布说明草稿](docs/release-notes-v0.3.0-experimental.md) · [本地验证](evals/releases/v0.3.0-experimental.md)
+[发布说明](docs/release-notes-v0.3.0-experimental.md) · [本地验证](evals/releases/v0.3.0-experimental.md)
 
 [更多案例与原始记录](docs/examples.md) · [现有工作流比较](docs/comparison.md) ·
 [评测方法](evals/README.md) · [M4 历史发布准备](docs/release-preparation.md)

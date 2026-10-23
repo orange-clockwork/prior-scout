@@ -1,8 +1,7 @@
-# Prior-Scout v0.3.0-experimental — release-notes draft
+# Prior-Scout v0.3.0-experimental — Evidence-Gated Workflow
 
-Local release candidate, prepared 2026-10-24 (Asia/Tokyo). Not published;
-GitHub main and the published pre-release remain v0.2.0-experimental (V01).
-This is an experimental pre-release proposal, not stable v1.0.
+Experimental pre-release, 2026-10-24 (Asia/Tokyo), based on the frozen V03
+candidate. This is not stable v1.0.
 
 - Adopt the exact evaluated V03 **Evidence-Gated Workflow**. For each material
   claim, distinguish a search lead, successfully acquired first-hand source
@@ -29,9 +28,11 @@ compatibility, complete source verification or production-grade reliability.
 [Evidence provenance and local validation](../evals/releases/v0.3.0-experimental.md).
 
 Source access and faithful execution still depend on the host and model; the
-budgets and evidence gates are instructions, not software enforcement. New native
-loading, automatic selection, online installation of this version and skills.sh
-indexing are not validated by this preparation. No new model evaluation was run.
+budgets and evidence gates are instructions, not software enforcement. Fresh native
+loading and automatic selection remain NOT RUN. Public bytes and a fresh project
+installation are checked separately during publication; neither establishes
+native use or skills.sh indexing. No new model evaluation was run. No skills.sh
+submission is part of this release.
 
 The Skill name and description are unchanged. Only `metadata.version` differs
 from evaluated V03; instruction-body bytes are identical. Both hashes are recorded

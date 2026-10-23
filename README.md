@@ -9,7 +9,7 @@ solutions before you build. Give it a need, URL or readable document; it searche
 public sources, verifies relevant capabilities, and briefly compares tools,
 services, skills, libraries or research implementations.
 
-**`0.3.0-experimental` · Local release candidate · MIT**
+**`0.3.0-experimental` · Experimental · MIT**
 
 ## See it in action
 
@@ -53,11 +53,10 @@ remains available with its archived audit record.
 
 ## Install & Usage
 
-This checkout prepares `0.3.0-experimental` from the frozen V03 candidate; it is
-not published yet. Public GitHub `main` still provides `0.2.0-experimental` (V01).
-The commands below install that moving public branch, not this local candidate.
-For local candidate installation, use the separate command below. Historical
-installation and usage observations remain specific to their recorded versions.
+These commands install public GitHub `main`, which can move after this release.
+The versioned release is [v0.3.0-experimental](https://github.com/orange-clockwork/prior-scout/releases/tag/v0.3.0-experimental),
+based on the frozen V03 Evidence-Gated Workflow. Installation and usage evidence
+remains specific to its recorded version and scope.
 
 Requires Node.js 22.20+ for [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4,
 and a host that can load Agent Skills, search and read sources. Run in your target project:
@@ -90,7 +89,7 @@ that the target project has no same-name installation.
 
 </details>
 
-To install the local candidate, run this in a separate target project after
+To install from a local release checkout, run this in a separate target project after
 checking for an existing same-name Skill. Replace `/path/to/release-checkout`
 with the checkout on branch `codex/release-v0.3.0-experimental`:
 
@@ -98,10 +97,12 @@ with the checkout on branch `codex/release-v0.3.0-experimental`:
 npx skills@1.7.4 add /path/to/release-checkout --skill prior-scout -a codex --copy -y
 ```
 
-The release smoke test reused an existing Skills CLI 1.7.4 directly, without a
-new npx download. It checked project installation and readable files; fresh
-native Codex loading, automatic selection and online installation of this version
-are **NOT RUN**. [Validation record](evals/releases/v0.3.0-experimental.md).
+The preparation smoke test reused an existing Skills CLI 1.7.4 directly, without
+a new npx download. It verified project installation and readable files. At that
+checkpoint, fresh native Codex loading, automatic selection and online installation
+of this version were **NOT RUN**. Publication verifies public bytes and a fresh
+project installation separately; neither check establishes native use.
+[Preparation record](evals/releases/v0.3.0-experimental.md).
 
 ## How it works
 
@@ -131,7 +132,7 @@ verdicts, run candidates, or begin unsolicited follow-up research. See [scope](d
 ## Evidence & limitations
 
 - **V03 Evidence-Gated Workflow:** distinguishes leads, acquired content and supported claims. In the existing small supplied-instruction comparison, Codex Sol High: V01 **4/4 PASS**, V03 **4/4 PASS**; Gemini Flash Low: V01 **2/6 PASS**, V03 **4/6 PASS**. Both candidates failed both live source-verification cases on Gemini. Exposed cases, one run per condition and manual non-blind grading do not establish statistical superiority, universal compatibility or production-grade reliability. [Evidence and validation](evals/releases/v0.3.0-experimental.md).
-- **Local packaging only:** project discovery, copy installation and exact installed bytes are checked separately from native loading and behavior. Source access, faithful claim gating and host-tool availability remain limitations. [Release-notes draft](docs/release-notes-v0.3.0-experimental.md).
+- **Local packaging only:** project discovery, copy installation and exact installed bytes are checked separately from native loading and behavior. Source access, faithful claim gating and host-tool availability remain limitations. [Release notes](docs/release-notes-v0.3.0-experimental.md).
 
 - **Historical V01 / M1 security baseline:** adds source URL provenance guidance, supported by a bounded security baseline, eight original/candidate runs and four final positive controls. The plain formatting control produced no tool calls; native selection remains INCONCLUSIVE. This does not establish complete prompt-injection protection or a measured error-rate reduction. Claude Code, Cursor and Gemini CLI compatibility is **NOT TESTED**. [Candidate review](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
@@ -148,7 +149,7 @@ unverified. Direct installation also does not guarantee skills.sh indexing,
 
 ## Further reading & license
 
-[Release-notes draft](docs/release-notes-v0.3.0-experimental.md) · [Local validation](evals/releases/v0.3.0-experimental.md)
+[Release notes](docs/release-notes-v0.3.0-experimental.md) · [Local validation](evals/releases/v0.3.0-experimental.md)
 
 [More examples and original records](docs/examples.md) · [Existing workflows](docs/comparison.md) ·
 [Evaluation method](evals/README.md) · [Historical M4 preparation](docs/release-preparation.md)

@@ -9,7 +9,7 @@ Prior-Scout（先例探索）は、開発前に既存の選択肢を調べるた
 関連する機能を確認します。ツール、サービス、Skill、ライブラリ、研究実装の
 共通点と重要な違いを簡潔にまとめます。
 
-**`0.3.0-experimental` · ローカルの公開候補版 · MIT**
+**`0.3.0-experimental` · 実験版 · MIT**
 
 ## 実際の動作例
 
@@ -50,10 +50,9 @@ Prior-Scout（先例探索）は、開発前に既存の選択肢を調べるた
 
 ## インストールと使い方
 
-このチェックアウトは、凍結した V03 から `0.3.0-experimental` を準備するものです。
-まだ公開していません。GitHub の公開 `main` は引き続き `0.2.0-experimental`（V01）です。
-以下のコマンドは更新され得る公開ブランチを導入し、ローカル候補版は導入しません。
-候補版には後述のローカル手順を使ってください。過去の導入・使用記録は各記録の版に限られます。
+以下のコマンドは GitHub の公開 `main` を導入します。公開後に内容が更新される場合があります。
+版を固定したリリースは [v0.3.0-experimental](https://github.com/orange-clockwork/prior-scout/releases/tag/v0.3.0-experimental) で、
+凍結した V03 Evidence-Gated Workflow に基づきます。導入・使用の根拠は、各記録の版と確認範囲に限られます。
 
 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 には Node.js 22.20 以降が必要です。
 ホスト側には Agent Skills の読み込み、検索、資料読み取りの機能が必要です。
@@ -87,7 +86,7 @@ npx skills@1.7.4 list -a codex
 
 </details>
 
-ローカル候補版は、同名の Skill がないことを確認した別の対象プロジェクトで導入します。
+ローカルのリリース用チェックアウトから導入する場合も、別の対象プロジェクトで同名の Skill がないことを確認します。
 `/path/to/release-checkout` を、ブランチ `codex/release-v0.3.0-experimental` の
 チェックアウトの場所に置き換えてください。
 
@@ -95,10 +94,11 @@ npx skills@1.7.4 list -a codex
 npx skills@1.7.4 add /path/to/release-checkout --skill prior-scout -a codex --copy -y
 ```
 
-今回のスモークテストでは、既存の Skills CLI 1.7.4 を直接使い、npx で新規取得していません。
-プロジェクトへの配置とファイルの読み取りを確認しました。新しい Codex セッションの
-ネイティブ読み込み、自動選択、この版の公開ソースからの導入は **NOT RUN** です。
-[検証記録](evals/releases/v0.3.0-experimental.md)。
+準備時のスモークテストでは、既存の Skills CLI 1.7.4 を直接使い、npx で新規取得していません。
+プロジェクトへの配置とファイルの読み取りを確認しました。その時点で、新しい Codex セッションの
+ネイティブ読み込み、自動選択、この版の公開ソースからの導入は **NOT RUN** でした。
+公開時には公開ファイルと新しいプロジェクトへの導入を別途確認しますが、ネイティブ使用の証明にはなりません。
+[準備時の記録](evals/releases/v0.3.0-experimental.md)。
 
 ## 処理の流れ
 
@@ -127,7 +127,7 @@ URL やツールの成功表示だけでは、資料本文を取得できたこ�
 ## 根拠と制約
 
 - **V03 Evidence-Gated Workflow：** 手がかり、取得した本文、裏付けのある主張を区別します。既存の小規模な指示提示型比較では、Codex Sol High は V01 **4/4 PASS**、V03 **4/4 PASS**、Gemini Flash Low は V01 **2/6 PASS**、V03 **4/6 PASS** でした。Gemini のライブ資料検証2ケースは両版とも失敗しました。評価前に内容が知られていた開発ケース、条件ごとに1回の実行、調整担当者による非盲検の手動採点であり、統計的優位性、普遍的な互換性、実運用水準の信頼性は示しません。[根拠と検証](evals/releases/v0.3.0-experimental.md)。
-- **ローカルのパッケージ確認：** 発見、コピー導入、導入後のバイト一致は、ネイティブ読み込みや動作とは別の確認です。資料へのアクセス、主張の裏付けを守れるか、ホストの機能には制約が残ります。[リリースノート案](docs/release-notes-v0.3.0-experimental.md)。
+- **ローカルのパッケージ確認：** 発見、コピー導入、導入後のバイト一致は、ネイティブ読み込みや動作とは別の確認です。資料へのアクセス、主張の裏付けを守れるか、ホストの機能には制約が残ります。[リリースノート](docs/release-notes-v0.3.0-experimental.md)。
 
 - **過去の V01 / M1 セキュリティ基準テスト：** 取得先 URL の出所を明確にする指示を追加しました。限定的なセキュリティ基準テスト、旧版と候補版の比較8回、最終の正常系・安全性確認4件が根拠です。通常の整形タスクではツール呼び出しはありませんでしたが、ネイティブな選択の検証は INCONCLUSIVE です。完全なプロンプトインジェクション対策や、エラー率の低下を実証するものではありません。Claude Code、Cursor、Gemini CLI の互換性は **NOT TESTED** です。[候補版の確認記録](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
@@ -143,7 +143,7 @@ Codex プロンプトや他の Skill に対する優位性は示せません。�
 
 ## 関連資料とライセンス
 
-[リリースノート案](docs/release-notes-v0.3.0-experimental.md) · [ローカル検証](evals/releases/v0.3.0-experimental.md)
+[リリースノート](docs/release-notes-v0.3.0-experimental.md) · [ローカル検証](evals/releases/v0.3.0-experimental.md)
 
 [ほかの例と元の記録](docs/examples.md) · [既存ワークフローとの比較](docs/comparison.md) ·
 [評価方法](evals/README.md) · [M4 当時の公開準備](docs/release-preparation.md)
