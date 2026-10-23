@@ -9,7 +9,7 @@ Prior-Scout（先例探索）は、開発前に既存の選択肢を調べるた
 関連する機能を確認します。ツール、サービス、Skill、ライブラリ、研究実装の
 共通点と重要な違いを簡潔にまとめます。
 
-**`0.1.1-experimental` · GitHub で公開中 · MIT**
+**`0.2.0-experimental` · ローカルのリリース候補 · MIT**
 
 ## 実際の動作例
 
@@ -47,6 +47,10 @@ Prior-Scout（先例探索）は、開発前に既存の選択肢を調べるた
 保存済みの監査記録とともに残しています。
 
 ## インストールと使い方
+
+GitHub の公開 main は引き続き `0.1.1-experimental` です。ローカルの
+`0.2.0-experimental` 候補は公開承認待ちで、以下のコマンドは公開 main を
+インストールします。`0.2.0-experimental` のリモートインストールは **NOT TESTED** です。
 
 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 には Node.js 22.20 以降が必要です。
 ホスト側には Agent Skills の読み込み、検索、資料読み取りの機能が必要です。
@@ -100,7 +104,9 @@ npx skills@1.7.4 list -a codex
 
 ## 根拠と制約
 
-- **公開ソースからのインストールを確認済み：** 主手順とコピー方式を、それぞれ新しいプロジェクトで検証しました。中核ファイルと LICENSE は公開版とバイト単位で一致しました。[公開検証](docs/release-checklist.md#public-release-verification-2026-10-22)
+- **実験版の M1 候補：** 取得先 URL の出所を明確にする指示を追加しました。限定的なセキュリティ基準テスト、旧版と候補版の比較8回、最終の正常系・安全性確認4件が根拠です。通常の整形タスクではツール呼び出しはありませんでしたが、ネイティブな選択の検証は INCONCLUSIVE です。完全なプロンプトインジェクション対策や、エラー率の低下を実証するものではありません。Claude Code、Cursor、Gemini CLI の互換性は **NOT TESTED** です。[候補版の確認記録](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
+
+- **0.1.1 の公開ソースからのインストールを確認済み：** 主手順とコピー方式を、それぞれ新しいプロジェクトで検証しました。中核ファイルと LICENSE は公開版とバイト単位で一致しました。[公開検証](docs/release-checklist.md#public-release-verification-2026-10-22)
 - **14ケースの監査：** 品質タスク8件と選択対照6件を、新しい子コンテキストで実施しました。ホストの指示は共有されており、完全に独立した盲検試験ではありません。初期プロンプト全体と構造化されたローダーのイベントは記録されていません。[評価結果](evals/results.md)
 - **ホストごとの観察を区別：** Mac の公開検証では、新しい Codex セッションは NOT TESTED のままです。その後の Windows のインストール・使用はユーザー報告で、実行の生記録はこのリポジトリに保存されていません。[Windows の要約と制約](docs/examples.md#windows-user-reported-observation)
 
