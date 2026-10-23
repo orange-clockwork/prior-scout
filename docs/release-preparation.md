@@ -1,5 +1,8 @@
 # M4 release preparation — 2026-10-22
 
+> Current local preparation: [v0.3.0-experimental validation](../evals/releases/v0.3.0-experimental.md)
+> and [release-notes draft](release-notes-v0.3.0-experimental.md). The M4 record below is historical.
+
 > Historical M4 snapshot. The project was subsequently published on GitHub.
 > Current publication, installation and remaining native-use/discovery results
 > are recorded in the [release checklist](release-checklist.md#public-release-verification-2026-10-22).

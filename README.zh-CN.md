@@ -8,11 +8,13 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 提供需求、网址或可读文档，它会搜索公开来源、核实相关功能，简要比较工具、服务、Skill、
 库或研究实现的相似点和关键差异。
 
-**`0.2.0-experimental` · 实验版 · MIT**
+**`0.3.0-experimental` · 本地发布候选版 · MIT**
 
 ## 看实际案例
 
-以下整理自**用户报告的 Prior-Scout 执行观察**；本轮文档更新另外核对了原始来源。
+以下 Demo 早于 V03，保留为历史使用示例，不是本版本的验证。
+
+以下整理自**用户报告的 Prior-Scout 执行观察**；当时整理案例时另外核对了原始来源。
 这些场次的确切输入与原始执行记录尚未保存在此仓库，因此不是逐字重现或独立性能测试。
 
 ### Demo 01 — Prior-Scout 能找到自己的同类方案吗？
@@ -45,9 +47,10 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 
 ## 安装与使用
 
-以下命令安装 GitHub 公开 `main`，内容可能在发布后更新。
-下方安装证据按版本区分；历史 M1.3 审查发生在发布前，
-不能作为 `0.2.0-experimental` 安装已通过的证据。
+此 checkout 基于冻结的 V03 准备 `0.3.0-experimental`，尚未发布。
+GitHub 公开 `main` 仍提供 `0.2.0-experimental`（V01）。以下命令安装可能变动的
+公开分支，不是此本地候选版；候选版请使用后面的本地安装命令。
+历史安装和使用观察只适用于各记录标明的版本。
 
 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本；
 宿主须支持 Agent Skills 加载、搜索和来源读取。请在目标项目中执行：
@@ -78,12 +81,29 @@ npx skills@1.7.4 list -a codex
 
 </details>
 
+本地候选版请在另一个目标项目中安装，先确认没有同名 Skill。
+将 `/path/to/release-checkout` 替换为位于 `codex/release-v0.3.0-experimental`
+分支的 checkout 路径：
+
+```sh
+npx skills@1.7.4 add /path/to/release-checkout --skill prior-scout -a codex --copy -y
+```
+
+本次 smoke test 直接复用已有 Skills CLI 1.7.4，没有通过 npx 新下载工具。
+验证范围是项目安装及文件可读；全新 Codex 原生加载、自动选用，以及此版本的在线安装
+均为 **NOT RUN**。[验证记录](evals/releases/v0.3.0-experimental.md)。
+
 ## 工作流程
 
 1. 确认需求、要比较的相似维度和必要条件。
 2. 在有限预算内搜索：通常最多 **6 条查询、8 份外部证据文档**。
-3. 阅读可靠来源，确认结论适用的交付物、版本、服务套餐或使用方式。
+3. 逐项区分搜索线索、实际取得的一手来源内容，以及内容支持的结论，确认交付物、版本和服务套餐。
 4. 简要说明有依据的相似点、关键差异和未知项，再继续其他已授权任务。
+
+URL 或工具成功状态本身不代表已取得来源内容。“未报告”只表示已读材料未提及；
+“未测量”须有来源明确说明。结果未知时仍保留有依据的方法上的部分相关性，不推定其效果。
+读取失败时，在预算内尝试同作者可读版本或其他一手来源；仍无法取得时，只保留已有支持的
+结论，其他线索标为未验证或省略。
 
 搜索摘要只作为线索。API、计划中的功能和部分相似，不等于完整的内置功能。
 预算是指令约束，不是程序强制保证。搜索和来源读取由宿主提供；Prior-Scout
@@ -95,7 +115,10 @@ npx skills@1.7.4 list -a codex
 
 ## 证据与限制
 
-- **M1 实验版安全基线：** 新增来源 URL 出处指引，证据包括有限安全基线、8 次原版／候选比较及 4 个最终正向控制。普通格式整理案例没有工具调用，原生选用仍为 INCONCLUSIVE。这不代表完全防止 Prompt Injection，也未测量错误率下降。Claude Code、Cursor 和 Gemini CLI 兼容性为 **NOT TESTED**。[候选审查](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
+- **V03 Evidence-Gated Workflow：** 区分线索、取得的内容和有支持的结论。已有的小规模 supplied-instruction 比较中，Codex Sol High：V01 **4/4 PASS**、V03 **4/4 PASS**；Gemini Flash Low：V01 **2/6 PASS**、V03 **4/6 PASS**。Gemini 的两个实时来源验证案例，两版均失败。案例已曝光、每条件只运行一次，且由协调者人工非盲评分，不能证明统计优越性、普遍兼容或生产级可靠性。[证据与验证](evals/releases/v0.3.0-experimental.md)。
+- **本地封装验证：** 项目发现、复制安装及安装内容一致，与原生加载、行为表现分开记录。来源访问、能否确实依据证据限制结论，以及宿主工具支持仍有限制。[发布说明草稿](docs/release-notes-v0.3.0-experimental.md)。
+
+- **历史 V01 / M1 安全基线：** 新增来源 URL 出处指引，证据包括有限安全基线、8 次原版／候选比较及 4 个最终正向控制。普通格式整理案例没有工具调用，原生选用仍为 INCONCLUSIVE。这不代表完全防止 Prompt Injection，也未测量错误率下降。Claude Code、Cursor 和 Gemini CLI 兼容性为 **NOT TESTED**。[候选审查](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
 - **0.1.1 公开安装已验证：** 主安装和复制命令已在不同的全新项目中测试，核心与 LICENSE 均与公开来源逐字节一致。[发布检查](docs/release-checklist.md#public-release-verification-2026-10-22)
 - **14 个案例的审查：** 包括 8 个质量任务和 6 个选用控制，使用新的子上下文，但仍共享宿主指令；不是完整独立盲测，也未取得完整初始提示和结构化加载器事件。[评测结果](evals/results.md)
@@ -107,6 +130,8 @@ npx skills@1.7.4 list -a codex
 或 find-skills 推荐。
 
 ## 其他文档与许可
+
+[发布说明草稿](docs/release-notes-v0.3.0-experimental.md) · [本地验证](evals/releases/v0.3.0-experimental.md)
 
 [更多案例与原始记录](docs/examples.md) · [现有工作流比较](docs/comparison.md) ·
 [评测方法](evals/README.md) · [M4 历史发布准备](docs/release-preparation.md)

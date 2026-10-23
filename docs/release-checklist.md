@@ -4,6 +4,38 @@ The user separately authorized the clean initial commit, private staging, and
 public release. This checklist records the checks; it grants no authorization.
 The [M4 report](release-preparation.md) preserves the earlier preparation snapshot.
 
+## v0.3.0-experimental local preparation — 2026-10-24
+
+Status: **READY for final publication approval**, local preparation only.
+The earlier authorization described above applies to the historical release;
+it does not authorize publication of v0.3.0-experimental.
+
+- Public baseline verified through the connected GitHub API: main and annotated
+  v0.2.0-experimental tag resolve to
+  `b141fc0cd3ebe252217adf39cd2279f785f60201`. The existing release is a pre-release.
+  Shell `git ls-remote` failed DNS; the API supplied the remote confirmation.
+- Dedicated branch: `codex/release-v0.3.0-experimental`, based on that tag.
+  The two unpublished evaluation commits remain on their original test branches;
+  they are not included in this release. No history was rewritten.
+- Exact evaluated V03 integrated; only version metadata changes. Four READMEs,
+  changelog and release notes describe the evidence gates and remaining failures.
+- YAML, structure, local links, licensing, privacy and scoped-diff checks passed.
+  Existing Skills CLI 1.7.4 discovered and copy-installed one Skill in a clean
+  disposable project; installed files match. This is packaging evidence only.
+- Fresh native loading, automatic selection, remote installation of this version
+  and new behavior evaluations: **NOT RUN**. No expensive suite or reader repair.
+- [Validation and hash provenance](../evals/releases/v0.3.0-experimental.md) ·
+  [Release-notes draft](release-notes-v0.3.0-experimental.md).
+
+After explicit final approval only: recheck remote main and the candidate diff,
+update local-candidate publication wording, validate the resulting tree, push the
+reviewed branch, integrate only its scoped changes into main without rewriting
+history, and push main. Create and push annotated `v0.3.0-experimental`, then create
+one GitHub **Pre-release** using the reviewed notes. Verify public bytes, tag target,
+pre-release flags and a fresh project installation from the published version.
+Any skills.sh submission is a separate explicitly approved action; indexing is
+not guaranteed. None of those publication actions has been executed here.
+
 ## v0.2.0-experimental publication — 2026-10-23
 
 Release source: [orange-clockwork/prior-scout](https://github.com/orange-clockwork/prior-scout).
