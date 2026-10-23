@@ -8,7 +8,7 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 提供需求、网址或可读文档，它会搜索公开来源、核实相关功能，简要比较工具、服务、Skill、
 库或研究实现的相似点和关键差异。
 
-**`0.2.0-experimental` · 本地发布候选 · MIT**
+**`0.2.0-experimental` · 实验版 · MIT**
 
 ## 看实际案例
 
@@ -45,8 +45,9 @@ Prior-Scout（先例探索）是一个仅包含指令的小型 Agent Skill，帮
 
 ## 安装与使用
 
-GitHub 公开 main 仍为 `0.1.1-experimental`；本地 `0.2.0-experimental` 候选
-等待发布授权。以下命令安装公开 main；`0.2.0-experimental` 远程安装为 **NOT TESTED**。
+以下命令安装 GitHub 公开 `main`，内容可能在发布后更新。
+下方安装证据按版本区分；历史 M1.3 审查发生在发布前，
+不能作为 `0.2.0-experimental` 安装已通过的证据。
 
 [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4 要求 Node.js 22.20 或更高版本；
 宿主须支持 Agent Skills 加载、搜索和来源读取。请在目标项目中执行：
@@ -94,7 +95,7 @@ npx skills@1.7.4 list -a codex
 
 ## 证据与限制
 
-- **M1 实验版候选：** 新增来源 URL 出处指引，证据包括有限安全基线、8 次原版／候选比较及 4 个最终正向控制。普通格式整理案例没有工具调用，原生选用仍为 INCONCLUSIVE。这不代表完全防止 Prompt Injection，也未测量错误率下降。Claude Code、Cursor 和 Gemini CLI 兼容性为 **NOT TESTED**。[候选审查](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
+- **M1 实验版安全基线：** 新增来源 URL 出处指引，证据包括有限安全基线、8 次原版／候选比较及 4 个最终正向控制。普通格式整理案例没有工具调用，原生选用仍为 INCONCLUSIVE。这不代表完全防止 Prompt Injection，也未测量错误率下降。Claude Code、Cursor 和 Gemini CLI 兼容性为 **NOT TESTED**。[候选审查](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
 - **0.1.1 公开安装已验证：** 主安装和复制命令已在不同的全新项目中测试，核心与 LICENSE 均与公开来源逐字节一致。[发布检查](docs/release-checklist.md#public-release-verification-2026-10-22)
 - **14 个案例的审查：** 包括 8 个质量任务和 6 个选用控制，使用新的子上下文，但仍共享宿主指令；不是完整独立盲测，也未取得完整初始提示和结构化加载器事件。[评测结果](evals/results.md)

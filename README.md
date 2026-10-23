@@ -9,7 +9,7 @@ solutions before you build. Give it a need, URL or readable document; it searche
 public sources, verifies relevant capabilities, and briefly compares tools,
 services, skills, libraries or research implementations.
 
-**`0.2.0-experimental` · Local release candidate · MIT**
+**`0.2.0-experimental` · Experimental · MIT**
 
 ## See it in action
 
@@ -51,9 +51,9 @@ remains available with its archived audit record.
 
 ## Install & Usage
 
-Public GitHub main remains `0.1.1-experimental`; this local `0.2.0-experimental`
-candidate awaits publication approval. The commands below install public main.
-Remote installation of `0.2.0-experimental` is **NOT TESTED**.
+These commands install public GitHub `main`, which can move after this release.
+Installation evidence below is version-specific; the historical M1.3 review
+predates publication and does not establish a `0.2.0-experimental` installation pass.
 
 Requires Node.js 22.20+ for [Skills CLI](https://github.com/vercel-labs/skills) 1.7.4,
 and a host that can load Agent Skills, search and read sources. Run in your target project:
@@ -106,7 +106,7 @@ verdicts, run candidates, or begin unsolicited follow-up research. See [scope](d
 
 ## Evidence & limitations
 
-- **Experimental M1 candidate:** adds source URL provenance guidance, supported by a bounded security baseline, eight original/candidate runs and four final positive controls. The plain formatting control produced no tool calls; native selection remains INCONCLUSIVE. This does not establish complete prompt-injection protection or a measured error-rate reduction. Claude Code, Cursor and Gemini CLI compatibility is **NOT TESTED**. [Candidate review](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
+- **Experimental M1 security baseline:** adds source URL provenance guidance, supported by a bounded security baseline, eight original/candidate runs and four final positive controls. The plain formatting control produced no tool calls; native selection remains INCONCLUSIVE. This does not establish complete prompt-injection protection or a measured error-rate reduction. Claude Code, Cursor and Gemini CLI compatibility is **NOT TESTED**. [Candidate review](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
 
 - **0.1.1 public installation verified:** the main and copy commands were tested in separate fresh projects. Installed core and LICENSE bytes matched the public source. [Release checks](docs/release-checklist.md#public-release-verification-2026-10-22)
 - **14-case audit:** eight quality tasks and six selection controls, using fresh child contexts with shared host instructions. It was not a fully independent blind test; the full initial prompt and structured loader events were not captured. [Results](evals/results.md)

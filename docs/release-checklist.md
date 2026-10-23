@@ -4,6 +4,37 @@ The user separately authorized the clean initial commit, private staging, and
 public release. This checklist records the checks; it grants no authorization.
 The [M4 report](release-preparation.md) preserves the earlier preparation snapshot.
 
+## v0.2.0-experimental publication — 2026-10-23
+
+Release source: [orange-clockwork/prior-scout](https://github.com/orange-clockwork/prior-scout).
+Version `0.2.0-experimental`; annotated tag `v0.2.0-experimental`; GitHub release
+channel: **Pre-release**, not stable 1.0. The user separately authorized final
+documentation, fast-forward integration, main push, this tag and one pre-release.
+
+This section records the pre-publication checks, not post-publication success.
+At that checkpoint, fetch confirmed public main
+`efec11814e09226903a8442851a1a126de22b57c`, followed by exactly the three approved
+M1 commits ending at `fd25b3f606682c9518a4bb36d766ac9801b12429`. The worktree
+was clean; effective Author/Committer used the verified GitHub noreply identity.
+No new behavior evaluations were run. The only subsequent edits are release
+status wording in four READMEs, CHANGELOG and this checklist.
+
+The core remains byte-identical to the reviewed candidate, SHA-256
+`024ce8852dc9b1a81284ffc80e354ac7ba3c306389063d6fab486af7d6896c10`.
+Both MIT licenses and all historical M1 evidence remain unchanged. The existing
+budgets, stopping rules and instruction-only packaging remain intact.
+
+Public bytes, tag target, pre-release flags and one fresh project-scoped install
+must be verified during publication; pre-publication checks are not installation
+or native-loading evidence. The dated M1.3 and 0.1.1 records below remain
+historical snapshots, including their publication boundaries and NOT TESTED
+judgments. Their former candidate status is not the current release status.
+
+The skills.sh Snyk page observed on October 23 still shows **WARN / MEDIUM / W011**,
+with an October 22 audit. A scan of this exact release is not established.
+No complete prompt-injection protection, measured error reduction or cross-host
+compatibility is claimed. Claude Code, Cursor and Gemini CLI remain NOT TESTED.
+
 ## M1.3 release candidate review — 2026-10-23
 
 Status: **LOCAL RELEASE CANDIDATE READY** after the recorded review. The local version is

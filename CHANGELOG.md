@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0-experimental — local release candidate, 2026-10-23
+## 0.2.0-experimental — 2026-10-23
 
 - Clarify source URL provenance: use supplied, search-discovered or legitimately
   linked URLs; do not invent documentation paths or treat failed reads as evidence.
@@ -11,10 +11,12 @@
 - Final review: four positive controls PASS; the plain formatting control had no
   tool calls, with native selection INCONCLUSIVE. These observations do not prove
   general security, error-rate reduction or cross-host compatibility.
-- Snyk still reports WARN / MEDIUM / W011 for the published Skill; this local
-  candidate has not been scanned. Claude Code, Cursor and Gemini CLI are NOT TESTED.
-- Local preparation only: no merge, push, tag or GitHub Release. Proposed tag
-  `v0.2.0-experimental` is not created. See [candidate review](docs/release-checklist.md#m13-release-candidate-review--2026-10-23).
+- The Snyk page observed before publication still reports WARN / MEDIUM / W011,
+  audited October 22; it does not establish a scan of this version. Claude Code,
+  Cursor and Gemini CLI are NOT TESTED.
+- Experimental pre-release, tag `v0.2.0-experimental`. See the preserved
+  [candidate review](docs/release-checklist.md#m13-release-candidate-review--2026-10-23)
+  and [publication checks](docs/release-checklist.md#v020-experimental-publication--2026-10-23).
 
 ## 0.1.1-experimental — local revision, 2026-10-22
 
@@ -38,7 +40,6 @@
   independent behavioral evidence. No performance advantage is established.
 - At initial draft time, MIT and attribution were pending; M4 confirms them.
 
-The 0.1.1-experimental source is public on GitHub; the 0.2.0-experimental
-candidate is local and unpublished. No Git tag or GitHub Release is created by
-this preparation. The original 0.1.1 revision was based on an instruction-gap
-review, not a demonstrated reduction in model errors.
+The original 0.1.1 revision was based on an instruction-gap review, not a
+demonstrated reduction in model errors. The 0.2.0-experimental release retains
+that limitation and adds only the narrow URL provenance clarification.
