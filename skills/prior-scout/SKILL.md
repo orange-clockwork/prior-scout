@@ -1,8 +1,8 @@
 ---
 name: prior-scout
-description: Find similar existing tools, services, agent skills, libraries, or research implementations in public sources, with source verification and brief similarities and differences. Use for explicit similarity, alternatives, related-work or prior-art requests, or new planning needing external comparison. Not for routine fixes, settled implementation, summaries or explanations alone.
+description: Find and compare existing tools, services, agent skills, libraries, or research using public sources or supplied materials. Verify source-backed claims and explain meaningful differences. Use for explicit similarity, alternatives, prior-art or related-work requests, and substantial new software, Agent Skill or research planning that needs external comparison. Not for ordinary debugging, formatting, refactoring, settled implementation, translation, summaries or documentation cleanup.
 metadata:
-  version: "0.3.0-experimental"
+  version: "1.0.0"
 ---
 
 # Prior-Scout

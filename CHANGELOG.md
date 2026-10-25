@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0 — 2026-10-26
+
+- Clarify public-source and supplied-material comparison/planning triggers and
+  routine-task exclusions after observed native loading misses.
+- Preserve the V03 evidence-gated workflow/security body byte-for-byte; do not
+  merge V04. No runtime, dependencies, telemetry or new permissions.
+- Verify the documented Codex configuration with a complete 20-case paired
+  development suite (19/20 candidate,18/20 baseline), fresh 8-case paired
+  acceptance (8/8 each), and separate loading, scope, budget and adversarial tests.
+- Retain one noncritical candidate content error as FAIL. No statistical
+  superiority, universal compatibility or injection immunity is claimed.
+- Update four READMEs, verified support scope, security limits and sanitized
+  evaluation evidence. MIT attribution unchanged. See [release notes](docs/release-notes-v1.0.0.md).
+
 ## 0.3.0-experimental — 2026-10-24
 
 - Integrate the frozen V03 Evidence-Gated Workflow: search leads, acquired source

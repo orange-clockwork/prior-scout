@@ -1,3 +1,7 @@
+> Current v1.0 evidence: [2026-10-26 acceptance record](releases/v1.0.0.md).
+> The material below is a preserved historical protocol/ledger. Its old run caps
+> and NOT RUN labels do not describe the separately authorized v1.0 sprint.
+
 # Development evaluation protocol
 
 Protocol v0.1, fixed on 2026-10-21 before writing the core skill.
