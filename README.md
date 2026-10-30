@@ -4,97 +4,74 @@
 
 **Find what already exists. Verify before you claim.**
 
-A lightweight, instruction-only Agent Skill for discovering existing software,
-libraries, Agent Skills and research. It reads first-hand sources, separates
-supported claims from unverified leads, explains meaningful differences, and
-returns to your original authorized task.
+Prior-Scout is a small Agent Skill that helps your AI agent find similar software,
+libraries, tools, Agent Skills, and research. It reads original sources, checks
+important capabilities, and returns a short comparison of what overlaps, what
+differs, and what is still unclear.
 
-**1.0.0 · MIT · verified scope: Codex**
+It is a set of instructions that uses your agent's existing search and reading
+tools, rather than a separate search engine or research service.
+
+## When to use it
+
+Use it before building a feature to look for existing open-source tools, when
+looking for a Skill for a particular task, or when comparing research methods
+from original publications. Routine fixes and implementation with an agreed plan
+do not need a new search.
 
 ## Install
 
-Skills CLI 1.7.4 requires Node.js 22.20 or later and npm. The host supplies file/source reading and,
-for live research, web search. Run in a project without a same-name Skill:
+For Codex, run this from your project with Node.js 22.20 or later and npm:
 
 ```sh
 npx skills@1.7.4 add orange-clockwork/prior-scout --skill prior-scout -a codex --copy -y
 ```
 
-To pin this release, replace the package argument with
+This copies the Skill from `main` into `.agents/skills/prior-scout/` for this
+project. Check for an existing installation first. Add `--global` to install
+across projects instead.
+
+To pin v1.0.0, replace `orange-clockwork/prior-scout` with
 `https://github.com/orange-clockwork/prior-scout/tree/v1.0.0`.
-Check the installed file and start a fresh agent session. `npx skills@1.7.4 remove prior-scout -a codex -y` removes this
-project installation. Do not add `--global` unless you intend a user-wide install.
+Review the installed files; a new agent session may be needed to load them.
 
 ## Use
 
-> Use $prior-scout to find existing open-source tools for checking Markdown
-> file links and heading fragments. Read first-hand documentation, compare
-> supported features and limitations, then draft a three-step plan for my checker.
+In Codex, name the Skill explicitly:
 
-Natural requests for alternatives, prior art, related work, or substantial new
-designs can also select the Skill. Selection depends on the host and model.
-Routine debugging, formatting, refactoring, translation, documentation cleanup
-and a settled implementation should proceed directly.
+> Use $prior-scout to find existing open-source Markdown link checkers before
+> I build one. Compare support for local files and heading links using their
+> documentation, then outline an implementation plan for my checker.
 
-Other examples:
+Automatic invocation depends on the host and model.
 
-- “Before designing this offline image feature, compare relevant existing libraries.”
-- “Find related methods for this study; distinguish measured outcomes from unknowns.”
-- “Compare these sources, then implement the already-authorized bounded change.”
-- “Compare only; do not recommend adoption.”
+## How it works
 
-## Workflow and boundaries
+Prior-Scout identifies relevant candidates, reads first-hand material such as
+official docs, repositories, or papers, and compares supported capabilities with
+source links. Released features, planned features, and unknowns stay separate.
+Search results and snippets are leads, not first-hand verification.
 
-1. Establish the need, hard constraints and any remaining authorized work.
-2. Search within a small budget: by default, six submitted query strings and eight
-   distinct external evidence documents; failed and batched queries count.
-3. Acquire relevant first-hand content before making material claims. A URL,
-   snippet, empty page or successful status code is insufficient.
-4. Return a short comparison with citations, delivery types, version conditions
-   and uncertainty, then continue the user's authorized task.
+By default, it works within six search queries and eight distinct external
+documents. These limits are instructions, not enforced by code.
 
-Released features, proposals and integrations remain distinct. A hosted service
-is not a library; an API is not a complete built-in workflow. “Not reported” is
-not “not measured” or “absent.” Partial methodological relevance remains useful
-without proving an unreported outcome. Failed reads permit bounded first-hand
-fallback; unavailable evidence remains unverified.
+It leaves adoption decisions to you and does not install candidates. If you
+asked for further work, the agent continues within that original scope.
 
-The Skill adds no runtime, dependencies, telemetry, search service or API key.
-The host supplies tools and permissions. Budgets and trust boundaries are
-instructions, not mechanical enforcement. It does not authorize installation,
-private-file access, uploads, global configuration changes, publication or
-unrequested adoption, business or legal-novelty decisions.
+## Limitations
 
-## Compatibility and evidence
+The host must supply search and source-reading tools. Coverage depends on those
+tools and accessible sources; results are not exhaustive and may miss closer
+matches. Reading documentation does not establish that a tool works in practice.
 
-The [v1.0 evaluation record](evals/releases/v1.0.0.md) records exact versions,
-case results, loading evidence, baseline comparisons and limitations. Native
-discovery, complete loading, actual source acquisition and behavior are distinct
-checks. Final publication and tag-installation checks are recorded in the GitHub Release.
+The tested configuration is Codex CLI 0.164.0 with gpt-6.1-sol/high on macOS 26.4.1 arm64.
+Other native hosts remain unverified; see the [compatibility record](docs/compatibility.md).
 
-Codex is the primary verified host. Other agents can consume the portable
-`SKILL.md`, but support claims are limited to the actual observations in the
-[support matrix](docs/compatibility.md). No universal accuracy, safety,
-exhaustive retrieval or statistically demonstrated baseline advantage is claimed.
+## Documentation and license
 
-External documents can contain hostile instructions. The Skill treats them as
-data and preserves user authorization boundaries; host sandboxing and limited
-permissions remain necessary. See [security limitations](SECURITY.md).
-The historical V03 Snyk result reported one Low third-party-content exposure
-indicator (100/1000); this is not a certification of v1.0 or injection immunity.
+[Skill instructions](skills/prior-scout/SKILL.md) · [Security](SECURITY.md) ·
+[v1.0 evaluation](evals/releases/v1.0.0.md) · [Evaluation protocol](evals/README.md) ·
+[Historical examples](docs/examples.md) · [Release notes](docs/release-notes-v1.0.0.md) ·
+[Changelog](CHANGELOG.md)
 
-GitHub publication and Skills CLI installation do not guarantee immediate
-[skills.sh](https://skills.sh/orange-clockwork/prior-scout/prior-scout) indexing.
-Reinstallation or telemetry is not a guaranteed refresh mechanism.
-
-## Project and license
-
-[Core instructions](skills/prior-scout/SKILL.md) · [Changelog](CHANGELOG.md) ·
-[Scope](docs/scope.md) · [Historical examples](docs/examples.md) ·
-[Evaluation protocol](evals/README.md) · [Release notes](docs/release-notes-v1.0.0.md)
-
-English is the primary maintenance version. Translations preserve the same
-claims and limitations. Private traces and third-party source snapshots are not
-distributed. MIT, Copyright (c) 2026 orange-clockwork;
-[root license](LICENSE) and [installable license](skills/prior-scout/LICENSE)
-carry identical notices. Third-party names and materials retain their owners' rights.
+English is the primary maintenance version. Licensed under [MIT](LICENSE).
